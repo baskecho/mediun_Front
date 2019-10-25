@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url(https://i.ibb.co/ncNhSLZ/imagen-proyecto2.jpg); 
+  background-repeat: no-repeat;
+  background-position: center center flex;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 
 code {

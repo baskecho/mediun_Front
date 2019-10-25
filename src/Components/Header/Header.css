@@ -1,0 +1,12 @@
+.a-title{
+    margin-top: 3%;
+    display: block;
+    width: 10%;
+    color: #575757;
+    margin-left: 10%;
+    font-size: 400%;
+    margin-bottom: -10%;
+}
+.a-title span{
+    color: #32B5DE;
+}
