@@ -1,0 +1,35 @@
+#lsb-title
+{
+    color: #32B5DE;
+    margin-bottom: 15%;
+}
+.side-bar{
+    display: block;
+    background-color: #575757;
+    width: 98%;
+    height: 100%;
+}
+.border-bar{
+    display: block;
+    background-color: #32B5DE;
+}
+.l-side-bar{
+    display: block;
+    color: white;
+    font-size:  95%;
+    margin-left: 3%;
+}
+.l-sc-bar{
+    margin-top: 90%;
+}
+.la-side-bar{
+    color: white;
+    margin-left: 6%;
+    font-size: 130%;
+}
+.im-side-bar{
+    margin-left: 2%;
+}
+.div-image-profile{
+    margin-bottom: 13%;
+}

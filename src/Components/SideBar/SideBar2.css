@@ -1,0 +1,97 @@
+#page-wrap {
+    text-align: center;
+    overflow: auto;
+}
+
+.bm-item {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+}
+
+.bm-item:hover {
+    color: #32B5DE;
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 70px;
+    top: 36px;
+}
+
+.bm-burger-bars {
+    background: #373a47;
+}
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+.bm-cross {
+    background: #bdc3c7;
+}
+
+.bm-menu {
+    background: #575757;
+    padding: 2.5em 1.5em 0;
+    width: 100%;
+}
+
+.bm-morph-shape {
+    fill: #373a47;
+}
+
+.bm-item-list {
+    color: #b8b7ad;
+}
+
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.lsb-title
+{
+    color: #32B5DE;
+    margin-bottom: 15%;
+    margin-top: 3%;
+    display: block;
+    width: 10%;
+    color: #32B5DE;
+    margin-left: 15%;
+    font-size: 300%;
+    margin-bottom: 10%;
+    
+}
+.la-side-bar{
+    color: white;
+    margin-left: 55px;
+    font-size: 130%;
+}
+.im-side-bar{
+    margin-left: 80px;
+    margin-bottom: 20px;
+}
+.div-image-profile{
+    margin-bottom: 13%;
+}
+.l-side-bar{
+    display: block;
+    color: white;
+    font-size:  155%;
+    margin-left: 3%;
+}
+.l-sc-bar{
+    margin-top: 20%;
+}
+
+.border-bar{
+    display: block;
+    background-color: #32B5DE;
+    width: 20%;
+    margin-top: -1%;
+}
