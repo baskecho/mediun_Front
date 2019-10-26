@@ -6,6 +6,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Login from './Login/Login';
 import Error from './Error/Error';
 import Header from './Header/Heaer';
+import Panel from './Panel/Panel';
 
 class Router extends Component 
 {
@@ -21,7 +22,9 @@ class Router extends Component
                                 <Login/>
                             </div>
                         )}/>
-                        <Route exact path="/profile" component={Login}/>
+                        <Route exact path="/schedule_appointment" render={()=>(
+                            <Panel/>
+                        )}/>
                         <Route component={Error}/>
                     </Switch>
                 </BrowserRouter>
