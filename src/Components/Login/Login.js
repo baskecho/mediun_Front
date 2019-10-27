@@ -23,7 +23,7 @@ class Login extends Component{
                                         <label className="form-check-label" for="exampleCheck1">Permanecer Conectado</label>
                                     </div>
                                     <button type="submit" className="button-login mt-1">Entrar</button>
-                                    <a href="#" className="link-login">¿No puede iniciar sesión?</a>
+                                    <a href="/" className="link-login">¿No puede iniciar sesión?</a>
                                 </form>
                             </div>
                         </div>

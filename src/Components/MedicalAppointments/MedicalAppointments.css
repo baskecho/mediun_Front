@@ -1,3 +1,19 @@
-.algo{
-    background-image: url(../SideBar/SideBar2);
+.medical_button_collection{
+    display: flex;
+    
+}
+.medical_button{
+    background-color: #32B5DE;
+    border-radius: 12%;
+    color: white;
+    font-size: 190%;
+    margin-top: -8%;
+    height: 65%;
+    margin-left: 1%;
+}
+.medical_button_edit{
+    margin-left: 5%;
+}
+.medical_button_add{
+    margin-left: 53%;
 }

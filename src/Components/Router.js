@@ -6,12 +6,25 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Login from './Login/Login';
 import Error from './Error/Error';
 import Header from './Header/Heaer';
-import Panel from './Panel/Panel';
+import Profile from './History/History';
+import ScheduleAppointment from './ScheduleAppointment/ScheduleAppointment';
+import MedicalAppointments from './MedicalAppointments/MedicalAppointments';
+import History from './History/History';
 
 class Router extends Component 
 {
+    state = { 
+        titlePanel: ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial"]
+    };
+
+    componentDidMount() 
+    {
+    
+    };
+
     render()
     { 
+        
         return ( 
             <div>
                 <BrowserRouter>
@@ -22,8 +35,25 @@ class Router extends Component
                                 <Login/>
                             </div>
                         )}/>
-                        <Route exact path="/schedule_appointment" render={()=>(
-                            <Panel/>
+                        <Route exact path="/schedule_appointments" render={()=>(
+                            <ScheduleAppointment
+                                titlePanel = {this.state.titlePanel[0]}
+                            />
+                        )}/>
+                        <Route exact path="/medical_appointments" render={()=>(
+                            <MedicalAppointments
+                                titlePanel = {this.state.titlePanel[1]}
+                            />
+                        )}/>
+                        <Route exact path="/profile" render={()=>(
+                            <Profile
+                                titlePanel = {this.state.titlePanel[2]}
+                            />
+                        )}/>
+                        <Route exact path="/my_history" render={()=>(
+                            <History
+                                titlePanel = {this.state.titlePanel[3]}
+                            />
                         )}/>
                         <Route component={Error}/>
                     </Switch>

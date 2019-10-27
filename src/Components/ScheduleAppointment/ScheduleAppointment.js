@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import SideBar2 from '../SideBar/SideBar2';
 import Panel from '../Panel/Panel';
 
-import './MedicalAppointments.css';
+import './ScheduleAppointment.css'
 
-class MedicalAppointments extends Component
+class ScheduleAppointment extends Component 
 {
     render() 
     { 
-        return (  
+        return ( 
             <div className="mx-auto">
                 <SideBar2/>
                 <div className="container">
@@ -19,11 +19,6 @@ class MedicalAppointments extends Component
                                 <Panel
                                     titlePanel=  {this.props.titlePanel}
                                 />
-                                <div className="medical_button_collection">
-                                    <button type="submit" className="medical_button">Eliminar</button>
-                                    <button type="submit" className="medical_button medical_button_edit">Editar</button>
-                                    <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -31,4 +26,4 @@ class MedicalAppointments extends Component
             </div>
         );
     }
-}export default MedicalAppointments;
+};export default ScheduleAppointment;
