@@ -3,13 +3,10 @@ import React, { Component } from 'react';
 import SideBar2 from '../SideBar/SideBar2';
 import Panel from '../Panel/Panel';
 
-import './ScheduleAppointment.css'
-
-class ScheduleAppointment extends Component 
+class EditAppointments  extends Component 
 {
-    render() 
-    { 
-        return ( 
+    render() { 
+        return (  
             <div className="mx-auto">
                 <SideBar2/>
                 <div className="container">
@@ -20,7 +17,7 @@ class ScheduleAppointment extends Component
                                     titlePanel=  {this.props.titlePanel}
                                 />
                                 <div className="medical_button_collection">
-                                    <button type="submit" className="schedule_button">Agendar</button>
+                                    <button type="submit" className="schedule_button">Editar</button>
                                 </div>
                             </form>
                         </div>
@@ -29,4 +26,4 @@ class ScheduleAppointment extends Component
             </div>
         );
     }
-};export default ScheduleAppointment;
+};export default EditAppointments;

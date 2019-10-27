@@ -9,6 +9,7 @@ import Header from './Header/Heaer';
 import Profile from './History/History';
 import ScheduleAppointment from './ScheduleAppointment/ScheduleAppointment';
 import MedicalAppointments from './MedicalAppointments/MedicalAppointments';
+import EditAppointments from './EditAppointments/EditAppointments'
 import History from './History/History';
 
 class Router extends Component 
@@ -20,7 +21,7 @@ class Router extends Component
     componentDidMount() 
     {
         this.setState({
-            titlePanel : ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial"]
+            titlePanel : ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial", "Editar cita"]
         });
     };
 
@@ -40,6 +41,11 @@ class Router extends Component
                         <Route exact path="/schedule_appointments" render={()=>(
                             <ScheduleAppointment
                                 titlePanel = {this.state.titlePanel[0]}
+                            />
+                        )}/>
+                        <Route exact path="/edit_appointments" render={()=>(
+                            <EditAppointments
+                                titlePanel = {this.state.titlePanel[4]}
                             />
                         )}/>
                         <Route exact path="/medical_appointments" render={()=>(
