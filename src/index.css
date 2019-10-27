@@ -6,7 +6,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(https://i.ibb.co/ncNhSLZ/imagen-proyecto2.jpg); 
+  /*background-image: url(https://i.ibb.co/ncNhSLZ/imagen-proyecto2.jpg); */
+  background-image: url(./Images/imagen-proyecto2.jpg);
   background-repeat: no-repeat;
   background-position: center center flex;
   -webkit-background-size: cover;

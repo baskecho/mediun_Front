@@ -1,6 +1,7 @@
 .panel-externo{
     display: block;
     height: 520px;
+    width: 100%;
 }
 .panel_interno{
     display: block;
@@ -16,22 +17,23 @@
 .colum-blue{
     display: flex;
     background-color: #32B5DE;
-    width: 100.5%;
+    width: 100.4%;
     height: 10%;
     border-color: #575757;
     border-style: solid;
     margin-top: -0.2%;
     margin-left: -0.2%;
+    margin-bottom: -0.2%;
 }
 .part-colum{
     display: block;
     background-color: #32B5DE;
     width: 6%;
-    height: 112%;
+    height: 115%;
     border-color: #575757;
     border-style: solid;
-    margin-top: -0.2%;
-    margin-left: -0.2%;
+    margin-top: -0.25%;
+    margin-left: -0.35%;
 }
 .tittle-panel{
     display: block;
@@ -54,20 +56,20 @@
 .colum-white{
     display: flex;
     width: 100.5%;
-    height: 91%;
-    border-style: solid;
+    height: 92%;
     border-color: #575757;
-    margin-left: -0.2%;
+    margin-left: -0.3%;
+    margin-top: -0.1%;
 }
 .white-small{
     display: block;
     background-color: white;
-    width: 6.1%;
-    height: 101%;
+    width: 6%;
+    height: 100.2%;
     border-color: #575757;
     border-style: solid;
-    margin-top: -0.4%;
-    margin-left: -0.3%;
+    margin-top: 0%;
+    
 }
 .contenido_panel{
     display: block;
@@ -75,5 +77,10 @@
     height: 100%;
     width: 100%;
     overflow-y: auto;
-    max-height: 350px;
+    max-height: 377px;
+    border-color: #575757;
+    border-style: solid;
+    margin-top: 0%;
+    margin-left: -0.31%;
+    
 }
