@@ -15,16 +15,18 @@ class MedicalAppointments extends Component
                 <div className="container">
                     <div className="row">
                         <div className="col-md-11 mx-auto">
-                            <form>
-                                <Panel
-                                    titlePanel=  {this.props.titlePanel}
-                                />
-                                <div className="medical_button_collection">
-                                    <button type="submit" className="medical_button">Eliminar</button>
-                                    <button type="submit" className="medical_button medical_button_edit">Editar</button>
-                                    <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
-                                </div>
-                            </form>
+                            <div>
+                                <form>
+                                    <Panel
+                                        titlePanel=  {this.props.titlePanel}
+                                    />
+                                    <div className="medical_button_collection">
+                                        <button type="submit" className="medical_button">Eliminar</button>
+                                        <button type="submit" className="medical_button medical_button_edit">Editar</button>
+                                        <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

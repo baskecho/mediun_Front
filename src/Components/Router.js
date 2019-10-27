@@ -14,12 +14,14 @@ import History from './History/History';
 class Router extends Component 
 {
     state = { 
-        titlePanel: ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial"]
+        titlePanel: []
     };
 
     componentDidMount() 
     {
-    
+        this.setState({
+            titlePanel : ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial"]
+        });
     };
 
     render()
