@@ -7,7 +7,7 @@ class Appointment extends Component
     render() 
     { 
         return ( 
-                <div class="container container-appointment">
+                <div className="container container-appointment">
                     <div className="row ">
                         <div className="col-md-12 code-appointment">                 
                             <label><strong>Codigo Cita: </strong>2333453453455</label>

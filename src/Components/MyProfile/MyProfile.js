@@ -7,7 +7,7 @@ class MyProfile extends Component
     render() 
     { 
         return ( 
-            <div class="container">
+            <div className="container">
                 <div className="row ">
                     <div className="col-md-12 title-my-profile">
                         <strong>LUIS PEPITO PEREZ SALGADO</strong>

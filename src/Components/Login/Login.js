@@ -6,10 +6,10 @@ class Login extends Component{
     render(){
         return(
             <div className="login">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 mx-auto ">
-                            <div class="card p-5 border border-dark">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-5 mx-auto ">
+                            <div className="card p-5 border border-dark">
                                 <form>
                                     <div className="form-group">
                                         <label className="title-form-login">Iniciar Sesión</label>
@@ -20,7 +20,7 @@ class Login extends Component{
                                     </div>
                                     <div className="form-group form-check mt-5">
                                         <input type="radio" className="form-check-input" id="exampleCheck1"/>
-                                        <label className="form-check-label" for="exampleCheck1">Permanecer Conectado</label>
+                                        <label className="form-check-label" htmlFor="exampleCheck1">Permanecer Conectado</label>
                                     </div>
                                     <button type="submit" className="button-login mt-1">Entrar</button>
                                     <a href="/" className="link-login">¿No puede iniciar sesión?</a>
