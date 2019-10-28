@@ -1,0 +1,90 @@
+.panel-externo{
+    display: block;
+    height: 520px;
+    width: 100%;
+}
+.panel_interno{
+    display: block;
+    flex-flow: row wrap;
+    background-color: white;
+    margin-top: 10%;
+    width: 100%;
+    height: 80%;
+    border-color: #575757;
+    border-style: solid;
+    
+}
+.colum-blue{
+    display: flex;
+    background-color: #32B5DE;
+    width: 100.4%;
+    height: 10%;
+    border-color: #575757;
+    border-style: solid;
+    margin-top: -0.2%;
+    margin-left: -0.2%;
+    margin-bottom: -0.2%;
+}
+.part-colum{
+    display: block;
+    background-color: #32B5DE;
+    width: 6%;
+    height: 115%;
+    border-color: #575757;
+    border-style: solid;
+    margin-top: -0.25%;
+    margin-left: -0.35%;
+}
+.tittle-panel{
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 160%;
+    color: white;
+}
+.point-panel{
+    display: block;
+    border-style: solid;
+    background-color: white;
+    width: 50%;
+    height: 70%;
+    border-radius: 100%;
+    border-color: #575757;
+    margin-left: 24%;
+    margin-top: 12%;
+}
+.colum-white{
+    display: flex;
+    width: 100.5%;
+    height: 92%;
+    border-color: #575757;
+    margin-left: -0.3%;
+    margin-top: -0.1%;
+}
+.white-small{
+    display: block;
+    background-color: white;
+    width: 6%;
+    height: 100.2%;
+    border-color: #575757;
+    border-style: solid;
+    margin-top: 0%;
+    
+}
+.contenido_panel{
+    display: block;
+    padding: 1% 2% 2% 2%;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 377px;
+    border-color: #575757;
+    border-style: solid;
+    margin-top: 0%;
+    margin-left: -0.31%;
+    
+}
+
+.prueba{
+    background-color: url(../Appointment/Appointment);
+}
