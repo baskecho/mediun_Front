@@ -8,7 +8,10 @@ class EditAppointments  extends Component
     render() { 
         return (  
             <div className="mx-auto">
-                <SideBar2/>
+                <SideBar2
+                    closeSesion = {this.props.closeSesion}
+                    AppointmentsDates = {this.props.AppointmentsDates}
+                />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-11 mx-auto">

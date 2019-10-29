@@ -13,7 +13,9 @@ class Panel extends Component
 
         if(this.props.titlePanel === "Mi perfil")
         {
-            renderContainer = <MyProfile/>;
+            renderContainer = <MyProfile
+                                AppointmentsDates = {this.props.AppointmentsDates}
+                            />;
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
