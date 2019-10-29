@@ -19,11 +19,25 @@ class Panel extends Component
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
-            renderContainer = <div>
-                                <Appointment/>
-                                <Appointment/>
-                                <Appointment/>
-                            </div>;
+            const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
+            const {name, identification, email, years } = this.props.AppointmentsDates;
+
+            const moreDate = {
+                name, 
+                identification, 
+                email, 
+                years
+            }
+
+            renderContainer = <React.Fragment>
+                {Object.keys(AppointmentsDates).map((date)=>(
+                    <Appointment
+                        key  = {date}
+                        infoAppointments = {AppointmentsDates[date]}
+                        moreDates = {moreDate}
+                    />
+                ))}
+            </React.Fragment>;
         }
         else if(this.props.titlePanel === "Agendar una cita" || this.props.titlePanel === "Editar cita")
         {

@@ -5,9 +5,7 @@ import './MyProfile.css';
 class MyProfile extends Component 
 {
     render() 
-    { 
-        console.log(this.props.AppointmentsDates)
-
+    {
         const {name , date, email, years, identification} = this.props.AppointmentsDates;
 
         return ( 

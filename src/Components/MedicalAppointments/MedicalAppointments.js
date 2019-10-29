@@ -9,6 +9,8 @@ class MedicalAppointments extends Component
 {
     render() 
     { 
+
+
         return (  
             <div className="mx-auto">
                 <SideBar2
@@ -22,6 +24,7 @@ class MedicalAppointments extends Component
                                 <form>
                                     <Panel
                                         titlePanel=  {this.props.titlePanel}
+                                        AppointmentsDates = {this.props.AppointmentsDates}
                                     />
                                     <div className="medical_button_collection">
                                         <button type="submit" className="medical_button">Eliminar</button>
