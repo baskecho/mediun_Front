@@ -35,6 +35,7 @@ class Panel extends Component
                         key  = {date}
                         infoAppointments = {AppointmentsDates[date]}
                         moreDates = {moreDate}
+                        getSelectedValue = {this.props.getSelectedValue}
                     />
                 ))}
             </React.Fragment>;

@@ -4,9 +4,12 @@ import './Appointment.css';
 
 class Appointment extends Component 
 {
+    handleOptionChange = () =>{
+        this.props.getSelectedValue(this.props.infoAppointments.code);
+    }
+
     render() 
     { 
-        console.log(this.props.infoAppointments);
         
         const {date, hour, hospital, consultorio, address, doctor, Especialidad, code} = this.props.infoAppointments;
         const {name, identification, email, years } = this.props.moreDates;
@@ -20,7 +23,7 @@ class Appointment extends Component
                     </div>
                     <div className="row ">
                         <div className="col-md-1 mx-auto my-auto">                 
-                            <input type="radio" name="appointment" className="input-radio" value="1" />
+                            <input onChange={this.handleOptionChange} type="radio" name="appointment" className="input-radio" value={code} />
                         </div>
                         <div className="col-md-3 mx-auto">
                             <ul>

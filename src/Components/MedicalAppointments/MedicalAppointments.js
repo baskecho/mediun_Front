@@ -7,10 +7,25 @@ import './MedicalAppointments.css';
 
 class MedicalAppointments extends Component
 {
+    
+
+    deleteMedicalAppointment = () =>
+    {
+        console.log("Todo esta muy bien");
+        this.props.deleteAppointment();
+
+    };
+
+    cancelActions = (e) =>
+    {
+        e.preventDefault();
+    };
+
+
+
+
     render() 
     { 
-
-
         return (  
             <div className="mx-auto">
                 <SideBar2
@@ -21,13 +36,14 @@ class MedicalAppointments extends Component
                     <div className="row">
                         <div className="col-md-11 mx-auto">
                             <div>
-                                <form>
+                                <form onSubmit={this.cancelActions}>
                                     <Panel
                                         titlePanel=  {this.props.titlePanel}
                                         AppointmentsDates = {this.props.AppointmentsDates}
+                                        getSelectedValue = {this.props.getSelectedValue}
                                     />
                                     <div className="medical_button_collection">
-                                        <button type="submit" className="medical_button">Eliminar</button>
+                                        <button onClick={this.deleteMedicalAppointment} className="medical_button">Eliminar</button>
                                         <button type="submit" className="medical_button medical_button_edit">Editar</button>
                                         <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
                                     </div>

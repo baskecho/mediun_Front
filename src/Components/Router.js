@@ -25,7 +25,8 @@ class Router extends Component
     state = { 
         titlePanel: [],
         AppointmentsDates : {},
-        render : '/'
+        render : '/',
+        selectedValue : ''
     };
 
     componentDidMount() 
@@ -90,9 +91,65 @@ class Router extends Component
     closeSesion = () => {
         this.setState({
                 AppointmentsDates : {},
-                render : '/'
+                render : '/',
+                selectedValue: ''
             });
     };
+
+
+
+    getSelectedValue = (selectedValue) =>{
+
+        this.setState({
+            selectedValue 
+        });
+        
+    };
+
+
+
+    deleteAppointment = () =>{
+        console.log("Vamos a eliminar la cita medica")
+
+        const code = this.state.selectedValue;
+        let copyAppointmentsDates = this.state.AppointmentsDates;
+        const copyMedicalAppointments = [...this.state.AppointmentsDates.medicalappointments]
+
+
+        const newMedicalAppointments = copyMedicalAppointments.filter((MedicalAppointment)=>(
+            MedicalAppointment.code !== code 
+        ));
+        
+
+        Swal.fire({
+            title: '¿Esta segur@?',
+            text: "¡Esta accion no se puede revertir!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!',
+            cancelButtonText: 'Cancelar'
+            }).then((result) => {
+            if (result.value) {
+
+                copyAppointmentsDates.medicalappointments = newMedicalAppointments;
+                this.setState({
+                    AppointmentsDates : copyAppointmentsDates
+                });
+
+                Swal.fire(
+                '¡Eliminado!',
+                'Su cita fue eliminada.',
+                'éxito'
+                )
+            }
+            })
+
+
+    };
+
+
 
     render()
     {   
@@ -128,6 +185,8 @@ class Router extends Component
                                 titlePanel = {this.state.titlePanel[1]}
                                 closeSesion = {this.closeSesion}
                                 AppointmentsDates = {this.state.AppointmentsDates}
+                                getSelectedValue = {this.getSelectedValue}
+                                deleteAppointment = {this.deleteAppointment}
                             />
                         )}/>
                         <Route exact path="/profile" render={()=>(
