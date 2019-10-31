@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import './MyProfile.css';
 
@@ -35,10 +36,14 @@ class MyProfile extends Component
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <button type="submit" className="profile-button">Mis citas medicas</button>
+                        <Link to={'/medical_appointments'}>
+                            <button type="submit" className="profile-button">Mis citas medicas</button>
+                        </Link>
                     </div>
                     <div className="col-md-6">
-                        <button type="submit" className="profile-button">Agendar Cita</button>
+                        <Link to={'/schedule_appointments'}>
+                            <button type="submit" className="profile-button">Agendar Cita</button>
+                        </Link>
                     </div>
                 </div>
             </div>

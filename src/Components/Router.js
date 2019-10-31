@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
+import React, { Component } from 'react';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import './Router.css';
@@ -109,16 +109,6 @@ class Router extends Component
 
 
     deleteAppointment = () =>{
-        console.log("Vamos a eliminar la cita medica")
-
-        const code = this.state.selectedValue;
-        let copyAppointmentsDates = this.state.AppointmentsDates;
-        const copyMedicalAppointments = [...this.state.AppointmentsDates.medicalappointments]
-
-
-        const newMedicalAppointments = copyMedicalAppointments.filter((MedicalAppointment)=>(
-            MedicalAppointment.code !== code 
-        ));
         
 
         Swal.fire({
@@ -133,6 +123,15 @@ class Router extends Component
             }).then((result) => {
             if (result.value) {
 
+                const code = this.state.selectedValue;
+                let copyAppointmentsDates = this.state.AppointmentsDates;
+                const copyMedicalAppointments = [...this.state.AppointmentsDates.medicalappointments]
+
+
+                const newMedicalAppointments = copyMedicalAppointments.filter((MedicalAppointment)=>(
+                    MedicalAppointment.code !== code 
+                ));
+
                 copyAppointmentsDates.medicalappointments = newMedicalAppointments;
                 this.setState({
                     AppointmentsDates : copyAppointmentsDates
@@ -145,10 +144,56 @@ class Router extends Component
                 )
             }
             })
-
-
     };
 
+
+    updateAppointment = (uploadData) =>
+    {
+        const {specialty, date, doctor} = uploadData;
+
+        if(specialty === ""|| date === "" || doctor === "")
+        {
+            Swal.fire({
+                type: 'error',
+                title: 'Ocurrio un problema',
+                text: 'Todos los campos son obligatorios'
+            })
+        }
+        else
+        {
+            let copyAppointmentsDates = this.state.AppointmentsDates;
+
+            let count = Number(this.state.AppointmentsDates.medicalappointments[0].code);
+            console.log(count);
+            console.log(count + 1);
+
+            const createMedicalAppointments = {
+                "date" : date,
+                "hour" : "12:15 PM",
+                "hospital": "Unal Hospital",
+                "consultorio": "25",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : doctor,
+                "Especialidad" : specialty,
+                "code" : (count+1).toString()
+            }
+
+            const newMedicalAppointments = [createMedicalAppointments , ...this.state.AppointmentsDates.medicalappointments]
+
+            copyAppointmentsDates.medicalappointments = newMedicalAppointments;
+
+                this.setState({
+                    AppointmentsDates : copyAppointmentsDates
+                });
+        };
+
+        Swal.fire(
+            '¡Correcto!',
+            'Cita medica creada',
+            'satisfactoriamente'
+            )
+        
+    };
 
 
     render()
@@ -171,6 +216,7 @@ class Router extends Component
                                 titlePanel = {this.state.titlePanel[0]}
                                 closeSesion = {this.closeSesion}
                                 AppointmentsDates = {this.state.AppointmentsDates}
+                                updateAppointment = {this.updateAppointment}
                             />
                         )}/>
                         <Route exact path="/edit_appointments" render={()=>(

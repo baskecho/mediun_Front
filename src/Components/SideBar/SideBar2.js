@@ -29,7 +29,9 @@ render() {
                 <Link to={"/profile"} className="l-side-bar">Mi Perfil</Link>
                 <Link to={"/medical_appointments"} className="l-side-bar">Mis citas medicas</Link>
                 <Link to={"/schedule_appointments"} className="l-side-bar">Agendar una cita</Link>
-                <Link to={"/my_history"} className="l-side-bar">Mi historial</Link>
+                {/* 
+                        <Link to={"/my_history"} className="l-side-bar">Mi historial</Link>
+                */}
                 <Link to={"/"} onClick={closeSesion} className="l-side-bar l-sc-bar">Cerrar sesion</Link>
             </Menu> 
         </div>

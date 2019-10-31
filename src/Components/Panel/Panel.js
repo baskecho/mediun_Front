@@ -42,7 +42,12 @@ class Panel extends Component
         }
         else if(this.props.titlePanel === "Agendar una cita" || this.props.titlePanel === "Editar cita")
         {
-            renderContainer = <CreateAppointments/>
+            renderContainer = <CreateAppointments
+                                updateAppointment = {this.props.updateAppointment}
+                                specialtyRef = {this.props.specialtyRef}
+                                dateRef = {this.props.dateRef}
+                                doctorRef = {this.props.doctorRef}
+                            />
         }
 
 

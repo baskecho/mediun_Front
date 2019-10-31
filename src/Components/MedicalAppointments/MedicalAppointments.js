@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+
 
 import SideBar2 from '../SideBar/SideBar2';
 import Panel from '../Panel/Panel';
@@ -11,10 +13,14 @@ class MedicalAppointments extends Component
 
     deleteMedicalAppointment = () =>
     {
-        console.log("Todo esta muy bien");
         this.props.deleteAppointment();
-
     };
+
+    updateMedicalAppointment = () =>
+    {
+
+    }
+
 
     cancelActions = (e) =>
     {
@@ -45,7 +51,9 @@ class MedicalAppointments extends Component
                                     <div className="medical_button_collection">
                                         <button onClick={this.deleteMedicalAppointment} className="medical_button">Eliminar</button>
                                         <button type="submit" className="medical_button medical_button_edit">Editar</button>
-                                        <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
+                                        <Link to="/schedule_appointments">
+                                            <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
+                                        </Link>
                                     </div>
                                 </form>
                             </div>
