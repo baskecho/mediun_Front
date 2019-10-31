@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 
 import SideBar2 from '../SideBar/SideBar2';
 import Panel from '../Panel/Panel';
@@ -21,6 +22,16 @@ class ScheduleAppointment extends Component
                 date = this.dateRef.current.value,
                 doctor = this.doctorRef.current.value;
 
+        if(specialty === "" || date === "" || doctor === "")
+        {
+            Swal.fire({
+                type: 'error',
+                title: 'Ocurrio un problema',
+                text: 'Todos los campos son obligatorios'
+            })
+            return(null);
+        }
+
         const uploadData = {
             specialty,
             date,
@@ -28,7 +39,8 @@ class ScheduleAppointment extends Component
         };
 
         this.props.updateAppointment(uploadData);
-    }
+        e.currentTarget.reset();
+    };
 
 
     render() 

@@ -151,41 +151,31 @@ class Router extends Component
     {
         const {specialty, date, doctor} = uploadData;
 
-        if(specialty === ""|| date === "" || doctor === "")
-        {
-            Swal.fire({
-                type: 'error',
-                title: 'Ocurrio un problema',
-                text: 'Todos los campos son obligatorios'
-            })
+        
+        let copyAppointmentsDates = this.state.AppointmentsDates;
+
+        let count = Number(this.state.AppointmentsDates.medicalappointments[0].code);
+        count  = count + 5;
+        
+
+        const createMedicalAppointments = {
+            "date" : date,
+            "hour" : "12:15 PM",
+            "hospital": "Unal Hospital",
+            "consultorio": "25",
+            "address" : "Cra 45 # 23-54",
+            "doctor" : doctor,
+            "Especialidad" : specialty,
+            "code" : (count).toString()
         }
-        else
-        {
-            let copyAppointmentsDates = this.state.AppointmentsDates;
 
-            let count = Number(this.state.AppointmentsDates.medicalappointments[0].code);
-            console.log(count);
-            console.log(count + 1);
+        const newMedicalAppointments = [createMedicalAppointments , ...this.state.AppointmentsDates.medicalappointments]
 
-            const createMedicalAppointments = {
-                "date" : date,
-                "hour" : "12:15 PM",
-                "hospital": "Unal Hospital",
-                "consultorio": "25",
-                "address" : "Cra 45 # 23-54",
-                "doctor" : doctor,
-                "Especialidad" : specialty,
-                "code" : (count+1).toString()
-            }
+        copyAppointmentsDates.medicalappointments = newMedicalAppointments;
 
-            const newMedicalAppointments = [createMedicalAppointments , ...this.state.AppointmentsDates.medicalappointments]
-
-            copyAppointmentsDates.medicalappointments = newMedicalAppointments;
-
-                this.setState({
-                    AppointmentsDates : copyAppointmentsDates
-                });
-        };
+            this.setState({
+                AppointmentsDates : copyAppointmentsDates
+            });
 
         Swal.fire(
             '¡Correcto!',

@@ -56,9 +56,13 @@ class Panel extends Component
                     <div className="panel-externo">
                         <div className="panel_interno">
                             <div className="colum-blue">
-                                <div className="part-colum">
-                                    <div className="point-panel"></div>
-                                </div>
+                                {/*
+                                    <div className="part-colum">
+                                        <div className="point-panel"></div>
+                                    </div>
+                                 */}
+                                
+
                                 <div className="tittle-panel">
                                     <strong>
                                         {this.props.titlePanel}
@@ -66,7 +70,10 @@ class Panel extends Component
                                 </div>
                             </div>
                             <div className="colum-white">
+                            {/*
                                 <div className="white-small"></div>
+                            */}
+                                
                                 <div className="contenido_panel">
                                     {renderContainer}
                                 </div>
