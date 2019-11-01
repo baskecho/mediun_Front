@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 import SideBar2 from '../SideBar/SideBar2';
@@ -9,29 +10,34 @@ import './MedicalAppointments.css';
 
 class MedicalAppointments extends Component
 {
-    
 
     deleteMedicalAppointment = () =>
     {
         this.props.deleteAppointment();
     };
 
-    updateMedicalAppointment = () =>
+    check = () =>
     {
-
+        if(this.props.selectedValue === '')
+        {
+            Swal.fire({
+                type: 'error',
+                title: 'Ocurrio un problema',
+                text: 'Todos los campos son obligatorios'
+            })
+        }
     }
 
 
     cancelActions = (e) =>
     {
         e.preventDefault();
+    
     };
-
-
-
 
     render() 
     { 
+
         return (  
             <div className="mx-auto">
                 <SideBar2
@@ -50,7 +56,9 @@ class MedicalAppointments extends Component
                                     />
                                     <div className="medical_button_collection">
                                         <button onClick={this.deleteMedicalAppointment} className="medical_button">Eliminar</button>
-                                        <button type="submit" className="medical_button medical_button_edit">Editar</button>
+                                            <Link  onClick={this.check} to={() => this.props.selectedValue === '' ? '/medical_appointments' : "/edit_appointments" }>
+                                                <button type="submit" className="medical_button medical_button_edit">Editar</button>
+                                            </Link>
                                         <Link to="/schedule_appointments">
                                             <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
                                         </Link>

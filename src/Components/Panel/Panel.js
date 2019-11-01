@@ -40,13 +40,26 @@ class Panel extends Component
                 ))}
             </React.Fragment>;
         }
-        else if(this.props.titlePanel === "Agendar una cita" || this.props.titlePanel === "Editar cita")
+        else if(this.props.titlePanel === "Agendar una cita")
         {
             renderContainer = <CreateAppointments
                                 updateAppointment = {this.props.updateAppointment}
                                 specialtyRef = {this.props.specialtyRef}
                                 dateRef = {this.props.dateRef}
                                 doctorRef = {this.props.doctorRef}
+                                titlePanel = {this.props.titlePanel}
+                            />
+        }
+        else if (this.props.titlePanel === "Editar cita")
+        {
+            renderContainer = <CreateAppointments
+                                updateAppointment = {this.props.updateAppointment}
+                                medicalappointments = {this.props.AppointmentsDates.medicalappointments}
+                                specialtyRef = {this.props.specialtyRef}
+                                dateRef = {this.props.dateRef}
+                                doctorRef = {this.props.doctorRef}
+                                titlePanel = {this.props.titlePanel}
+                                selectedValue = {this.props.selectedValue}
                             />
         }
 
