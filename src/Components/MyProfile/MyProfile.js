@@ -1,42 +1,49 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import './MyProfile.css';
 
 class MyProfile extends Component 
 {
     render() 
-    { 
+    {
+        const {name , date, email, years, identification} = this.props.AppointmentsDates;
+
         return ( 
             <div className="container">
                 <div className="row ">
                     <div className="col-md-12 title-my-profile">
-                        <strong>LUIS PEPITO PEREZ SALGADO</strong>
+                        <strong>{name}</strong>
                     </div>
                 </div>
                 <div className="row ">
                     <div className="col-md-6">
                         <ul>
                             <li><strong>NUMERO DE IDENTIFICACION</strong></li>
-                            <label>1234567890</label>
+                            <label>{identification}</label>
                             <li><strong>EDAD</strong></li>
-                            <label>45 años</label>
+                            <label>{years} años</label>
                         </ul>
                     </div>
                     <div className="col-md-6">
                         <ul>
                             <li><strong>FECHA DE NACIMIENTO</strong></li>
-                            <label>29-03-2000</label>
+                            <label>{date}</label>
                             <li><strong>CORREO</strong></li>
-                            <label>lpperezs@unal.edu.co</label>
+                            <label>{email}</label>
                         </ul>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-6">
-                        <button type="submit" className="profile-button">Mis citas medicas</button>
+                        <Link to={'/medical_appointments'}>
+                            <button type="submit" className="profile-button">Mis citas medicas</button>
+                        </Link>
                     </div>
                     <div className="col-md-6">
-                        <button type="submit" className="profile-button">Agendar Cita</button>
+                        <Link to={'/schedule_appointments'}>
+                            <button type="submit" className="profile-button">Agendar Cita</button>
+                        </Link>
                     </div>
                 </div>
             </div>

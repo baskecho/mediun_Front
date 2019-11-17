@@ -1,0 +1,157 @@
+[
+    {
+        "userName": "lgavendanoa",
+        "name": "Luis Gerson Avendaño Alvira",
+        "password": "admin1",
+        "idUser": 124564,
+        "identification" : 1031126331,
+        "years" : 23,
+        "date" : "27-12-1996",
+        "email" : "lgavendanoaunal@unal.edu.co",
+        "medicalappointments" : [
+            {
+                "date" : "23-12-2019",
+                "hour" : "10:15 AM",
+                "hospital": "Unal Hospital",
+                "consultorio": "23",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : "Pepito Juanito Perez",
+                "Especialidad" : "Internista",
+                "code" : "4554563214521"
+            },
+            {
+                "date" : "25-12-2020",
+                "hour" : "10:12 AM",
+                "hospital": "Facultad de medicina",
+                "consultorio": "232",
+                "address" : "Cra 30 # 23-54",
+                "doctor" : "Juliana Maritza Perez",
+                "Especialidad" : "Nutricionista",
+                "code" : "4563211233212"
+            },
+            {
+                "date" : "15-11-2019",
+                "hour" : "3:15 PM",
+                "hospital": "Colegiado Unal",
+                "consultorio": "105",
+                "address" : "Cra 15 # 15-54",
+                "doctor" : "Luis Ignacio Santofimio",
+                "Especialidad" : "Psicologia",
+                "code" : "4563214587965"
+            },
+            {
+                "date" : "23-12-2019",
+                "hour" : "12:15 PM",
+                "hospital": "Unal Hospital",
+                "consultorio": "25",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : "Sandra Liliana Perez",
+                "Especialidad" : "Otorrinolaringologia",
+                "code" : "5698563214565"
+            }
+        ],
+        "id" : 1
+
+    },
+    {
+        "userName": "hbgramirezp",
+        "name": "Sandra Liliana Rojas Jaramillo",
+        "password": "admin2",
+        "idUser": 4562131,
+        "identification" : 1256325452,
+        "years" : 32,
+        "date" : "27-12-1986",
+        "email" : "hbgramirezp@unal.edu.co",
+        "medicalappointments" : [
+            {
+                "date" : "25-12-2020",
+                "hour" : "8:15 AM",
+                "hospital": "Facultad de medicina",
+                "consultorio": "232",
+                "address" : "Cra 30 # 23-54",
+                "doctor" : "Juliana Maritza Perez",
+                "Especialidad" : "Nutricionista",
+                "code" : "5632659875452"
+            },
+            {
+                "date" : "23-12-2019",
+                "hour" : "2:15 PM",
+                "hospital": "Unal Hospital",
+                "consultorio": "25",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : "Sandra Liliana Perez",
+                "Especialidad" : "Otorrinolaringologia",
+                "code" : "4565878546254"
+            }
+        ],
+        "id" : 2
+    },
+    {
+        "userName": "plperezg",
+        "name": "Francisco Alberto Terreros Ruiz",
+        "password": "admin3",
+        "idUser": 456231546554,
+        "identification" : 5632154521,
+        "years" : 24,
+        "date" : "27-12-1995",
+        "email" : "plperezg@unal.edu.co",
+        "medicalappointments" : [
+            {
+                "date" : "23-12-2019",
+                "hour" : "9:15 AM",
+                "hospital": "Unal Hospital",
+                "consultorio": "23",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : "Pepito Juanito Perez",
+                "Especialidad" : "Internista",
+                "code" : "564521356985465"
+            }
+        ],
+        "id" : 3
+    },
+    {
+        "userName": "spromeror",
+        "name": "Gustavo Alfonso Angarita Ramirez",
+        "password": "admin4",
+        "idUser": 45652145654,
+        "identification" : 4568956452,
+        "years" : 19,
+        "date" : "27-12-2000",
+        "email" : "spromeror@unal.edu.co",
+        "medicalappointments" : [
+            {
+                "date" : "23-12-2019",
+                "hour" : "5:15 AM",
+                "hospital": "Unal Hospital",
+                "consultorio": "23",
+                "address" : "Cra 45 # 23-54",
+                "doctor" : "Pepito Juanito Perez",
+                "Especialidad" : "Internista",
+                "code" : "4554563214521"
+            },
+            {
+                "date" : "25-12-2019",
+                "hour" : "10:12 PM",
+                "hospital": "Colegiado Unal",
+                "consultorio": "232",
+                "address" : "Cra 30 # 23-54",
+                "doctor" : "Martha ceclia Baena",
+                "Especialidad" : "Psicologia",
+                "code" : "4563211233212"
+            }
+        ],
+        "id" : 4
+    },
+    {
+        "userName": "jasantosf",
+        "name": "Julian Antonio Carabuena Salamanca",
+        "password": "admin5",
+        "idUser": 4564211456,
+        "identification" : 1256325421,
+        "years" : 27,
+        "date" : "27-12-1994",
+        "email" : "jasantosf@.unal.edu.co",
+        "medicalappointments" : [],
+        "id" : 5
+    }
+]

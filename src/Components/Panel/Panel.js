@@ -13,19 +13,54 @@ class Panel extends Component
 
         if(this.props.titlePanel === "Mi perfil")
         {
-            renderContainer = <MyProfile/>;
+            renderContainer = <MyProfile
+                                AppointmentsDates = {this.props.AppointmentsDates}
+                            />;
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
-            renderContainer = <div>
-                                <Appointment/>
-                                <Appointment/>
-                                <Appointment/>
-                            </div>;
+            const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
+            const {name, identification, email, years } = this.props.AppointmentsDates;
+
+            const moreDate = {
+                name, 
+                identification, 
+                email, 
+                years
+            }
+
+            renderContainer = <React.Fragment>
+                {Object.keys(AppointmentsDates).map((date)=>(
+                    <Appointment
+                        key  = {date}
+                        infoAppointments = {AppointmentsDates[date]}
+                        moreDates = {moreDate}
+                        getSelectedValue = {this.props.getSelectedValue}
+                    />
+                ))}
+            </React.Fragment>;
         }
-        else if(this.props.titlePanel === "Agendar una cita" || this.props.titlePanel === "Editar cita")
+        else if(this.props.titlePanel === "Agendar una cita")
         {
-            renderContainer = <CreateAppointments/>
+            renderContainer = <CreateAppointments
+                                updateAppointment = {this.props.updateAppointment}
+                                specialtyRef = {this.props.specialtyRef}
+                                dateRef = {this.props.dateRef}
+                                doctorRef = {this.props.doctorRef}
+                                titlePanel = {this.props.titlePanel}
+                            />
+        }
+        else if (this.props.titlePanel === "Editar cita")
+        {
+            renderContainer = <CreateAppointments
+                                updateAppointment = {this.props.updateAppointment}
+                                medicalappointments = {this.props.AppointmentsDates.medicalappointments}
+                                specialtyRef = {this.props.specialtyRef}
+                                dateRef = {this.props.dateRef}
+                                doctorRef = {this.props.doctorRef}
+                                titlePanel = {this.props.titlePanel}
+                                selectedValue = {this.props.selectedValue}
+                            />
         }
 
 
@@ -34,9 +69,13 @@ class Panel extends Component
                     <div className="panel-externo">
                         <div className="panel_interno">
                             <div className="colum-blue">
-                                <div className="part-colum">
-                                    <div className="point-panel"></div>
-                                </div>
+                                {/*
+                                    <div className="part-colum">
+                                        <div className="point-panel"></div>
+                                    </div>
+                                 */}
+                                
+
                                 <div className="tittle-panel">
                                     <strong>
                                         {this.props.titlePanel}
@@ -44,7 +83,10 @@ class Panel extends Component
                                 </div>
                             </div>
                             <div className="colum-white">
+                            {/*
                                 <div className="white-small"></div>
+                            */}
+                                
                                 <div className="contenido_panel">
                                     {renderContainer}
                                 </div>
