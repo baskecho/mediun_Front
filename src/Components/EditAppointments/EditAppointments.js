@@ -36,6 +36,7 @@ class EditAppointments  extends Component
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
                     AppointmentsDates = {this.props.editAppointment}
+                    apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">
                     <div className="row">

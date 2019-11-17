@@ -11,6 +11,7 @@ class Profile extends Component
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
                     AppointmentsDates = {this.props.AppointmentsDates}
+                    apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">
                     <div className="row">
@@ -19,6 +20,7 @@ class Profile extends Component
                                 <Panel
                                     titlePanel=  {this.props.titlePanel}
                                     AppointmentsDates = {this.props.AppointmentsDates}
+                                    apiLogin = {this.props.apiLogin}
                                 />
                             </form>
                         </div>

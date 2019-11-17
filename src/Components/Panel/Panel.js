@@ -15,26 +15,46 @@ class Panel extends Component
         {
             renderContainer = <MyProfile
                                 AppointmentsDates = {this.props.AppointmentsDates}
+                                apiLogin = {this.props.apiLogin}
                             />;
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
             const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
-            const {name, identification, email, years } = this.props.AppointmentsDates;
+            const {identification,  years } = this.props.AppointmentsDates;
 
             const moreDate = {
-                name, 
                 identification, 
-                email, 
                 years
             }
 
+            const scheduleByPatient = this.props.scheduleByPatient;
+
+            if(Object.keys(this.props.apiLogin).length === 0)
+            {
+                return null;
+            }
+
+            const {email, id, name, nickname} = this.props.apiLogin;
+
+            const moreDateTwo = {
+                name,
+                id, 
+                email, 
+                nickname
+            }
+
+            console.log(this.props.apiLogin);
+
+            console.log(scheduleByPatient);
+
             renderContainer = <React.Fragment>
-                {Object.keys(AppointmentsDates).map((date)=>(
+                {Object.keys(scheduleByPatient).map((date)=>(
                     <Appointment
                         key  = {date}
-                        infoAppointments = {AppointmentsDates[date]}
+                        infoAppointment = {scheduleByPatient[date]}
                         moreDates = {moreDate}
+                        moreDateTwo = {moreDateTwo}
                         getSelectedValue = {this.props.getSelectedValue}
                     />
                 ))}
