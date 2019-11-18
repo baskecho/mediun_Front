@@ -205,6 +205,14 @@ class Router extends Component
             });
     };
 
+    setRender = (render) =>{
+
+        console.log("¿Que paso?");
+        this.setState({
+            render
+        });
+    };
+
 
 
     getSelectedValue = (selectedValue) =>{
@@ -394,8 +402,9 @@ class Router extends Component
             <div>
                 {/*
                     <CharactersQMutation/>
+                    <CharactersQuery/>
                 */}
-                <CharactersQuery/>
+                
                 <BrowserRouter>
                         <Redirect from="/" to= {this.state.render}/>
                         <Redirect from="/edit_appointments" to= {this.state.render}/>
@@ -438,6 +447,7 @@ class Router extends Component
                                 selectedValue = {this.state.selectedValue}
                                 apiLogin = {this.state.apiLogin}
                                 getAppointment = {this.getAppointment}
+                                setRender = {this.setRender}
                             />
                         )}/>
                         <Route exact path="/profile" render={()=>(

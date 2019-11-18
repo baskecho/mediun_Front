@@ -4,6 +4,7 @@ import './Panel.css';
 import Appointment from '../Appointment/Appointment';
 import MyProfile from '../MyProfile/MyProfile';
 import CreateAppointments from '../CreateAppointments/CreateAppointments';
+import EditApp from '../EditApp/EditApp';
 
 class Panel extends Component 
 {
@@ -68,11 +69,12 @@ class Panel extends Component
                                 dateRef = {this.props.dateRef}
                                 doctorRef = {this.props.doctorRef}
                                 titlePanel = {this.props.titlePanel}
+                                scheduleByPatient = {this.props.scheduleByPatient}
                             />
         }
         else if (this.props.titlePanel === "Editar cita")
         {
-            renderContainer = <CreateAppointments
+            renderContainer = <EditApp
                                 updateAppointment = {this.props.updateAppointment}
                                 medicalappointments = {this.props.AppointmentsDates.medicalappointments}
                                 specialtyRef = {this.props.specialtyRef}
@@ -80,6 +82,7 @@ class Panel extends Component
                                 doctorRef = {this.props.doctorRef}
                                 titlePanel = {this.props.titlePanel}
                                 selectedValue = {this.props.selectedValue}
+                                scheduleByPatient = {this.props.scheduleByPatient}
                             />
         }
 

@@ -6,21 +6,51 @@ import Panel from '../Panel/Panel';
 
 import './ScheduleAppointment.css'
 
+
+import {Mutation, Query} from 'react-apollo';
+import {gql} from 'apollo-boost';
+
+
+let datosQuery = "";
+let idUpdate ="";
+
+
+
 class ScheduleAppointment extends Component 
 {
+
+    
 
     specialtyRef = React.createRef();
     dateRef = React.createRef();
     doctorRef = React.createRef();
 
-    updateAppointment = (e) =>
+    updateAppointment = () =>
     {
-        e.preventDefault();
+        
+
+        const str = this.specialtyRef.current.value;
+
+        const selectSelect = str.split(" / ");
+
+        const prueba = datosQuery.filter((datoQuery)=>(
+            selectSelect[0] === datoQuery.date &&
+            selectSelect[1] === datoQuery.doctor && 
+            selectSelect[2] === datoQuery.specialism
+        ));
+
+        console.log(prueba[0].id);
+            
+        idUpdate = prueba[0].id;
+        
+
     
 
-        const specialty = this.specialtyRef.current.value,
+        /*const specialty = this.specialtyRef.current.value,
                 date = this.dateRef.current.value,
                 doctor = this.doctorRef.current.value;
+        
+        console.log("hola");
 
         if(specialty === "" || date === "" || doctor === "")
         {
@@ -29,6 +59,7 @@ class ScheduleAppointment extends Component
                 title: 'Ocurrio un problema',
                 text: 'Todos los campos son obligatorios'
             })
+        
             return(null);
         }
 
@@ -38,13 +69,75 @@ class ScheduleAppointment extends Component
             doctor
         };
 
+
         this.props.updateAppointment(uploadData);
-        e.currentTarget.reset();
+        e.currentTarget.reset();*/
     };
+
+
+    graphqlAppointments = () =>
+    {
+        const CharactersQuery = () => {
+            if(Object.keys(this.props.apiLogin).length === 0)
+            {
+                return null;
+            }
+
+            const name = "";
+            
+
+            return <Query query={gql`query ($name:String!){
+                    scheduleByPatient(patient: $name){
+                    id
+                    doctor
+                    date
+                    doctor
+                    specialism
+                    code
+                    available
+                } 
+                }`} variables={{ name }}>
+                {
+                    ({loading, error, data }) => {
+                        if(loading) return <p>Cargando.....</p>
+                        if(error) return <p>Error!</p>
+                        
+                        datosQuery = data.scheduleByPatient;
+
+                        return (
+                            <Panel
+                                titlePanel=  {this.props.titlePanel}
+                                specialtyRef = {this.specialtyRef}
+                                dateRef = {this.dateRef}
+                                doctorRef = {this.doctorRef}
+                                scheduleByPatient = {data.scheduleByPatient}
+                            />
+                        )
+                    }
+                }
+                </Query>
+        };
+
+        return (CharactersQuery);
+    }
+
+    reload = () => {
+        window.location.reload();
+    }
 
 
     render() 
     { 
+
+        if(Object.keys(this.props.apiLogin).length === 0)
+            {
+                return null;
+            }
+
+            const name = this.props.apiLogin.name;
+
+
+        const CharactersSchedulePanelQuery = this.graphqlAppointments();
         return ( 
             <div className="mx-auto">
                 <SideBar2
@@ -56,15 +149,89 @@ class ScheduleAppointment extends Component
                     <div className="row">
                         <div className="col-md-11 mx-auto">
                             <form onSubmit={this.updateAppointment}>
-                                <Panel
+
+                                {/*
+                                    <Panel
                                     titlePanel=  {this.props.titlePanel}
                                     specialtyRef = {this.specialtyRef}
                                     dateRef = {this.dateRef}
                                     doctorRef = {this.doctorRef}
-                                />
-                                <div className="medical_button_collection">
-                                    <button type="submit" className="schedule_button">Agendar</button>
-                                </div>
+                                    />
+
+                                 */}
+                                <CharactersSchedulePanelQuery/>
+                                
+                                
+
+                                
+                                    <Mutation mutation={gql`mutation ($id: String!, $patient: String!){
+                                        assignSchedule(
+                                            id: $id
+                                            patient: $patient
+                                        ) {
+                                            id
+                                            patient
+                                            specialism
+                                            date
+                                            doctor
+                                        }
+                                    }`}>
+                                    {
+                                        (addTodo,{data }) => {
+                                            if(data == null)
+                                            {
+                                                
+                                            }
+                                            else
+                                            {
+                                                //console.log(this.userRef.current.value)
+                                                //console.log(this.passwordRef.current.value);
+                                                //this.establishLogiN(data);
+                                                console.log(data);
+                                            }
+                                            
+                                            return(
+
+                                                <div className="medical_button_collection">
+                                                    <button onClick={(e)=>{
+
+                                                        e.preventDefault();
+                                                        this.updateAppointment() //funcion que me trae lo que necesito
+
+                                                        console.log("Hola amigos, vamos a agregar jaja");
+                                                        console.log(idUpdate);
+                                                        console.log(name);
+
+                                                        addTodo({
+                                                        variables: {
+                                                            id: idUpdate,
+                                                            patient: name
+                                                        }
+
+                                                    });
+
+                                                    Swal.fire(
+                                                    '¡Correcto!',
+                                                    'Cita medica creada',
+                                                    'satisfactoriamente'
+                                                    )
+
+                                                    Swal.fire({
+                                                        position: 'top-center',
+                                                        type: 'success',
+                                                        title: 'La cita fue agregada',
+                                                        showConfirmButton: false,
+                                                        timer: 2500
+                                                    })
+                                                    setTimeout(this.reload, 1000);
+                                                    }} className="schedule_button">Agendar</button>
+                                                    </div>
+                                                ) 
+                                            
+                                        }
+                                    }
+                                    </Mutation>
+                                
                             </form>
                         </div>
                     </div>
@@ -73,3 +240,5 @@ class ScheduleAppointment extends Component
         );
     }
 };export default ScheduleAppointment;
+
+

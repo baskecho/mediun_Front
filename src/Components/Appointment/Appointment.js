@@ -40,6 +40,7 @@ class Appointment extends Component
                                 this.props.getSelectedValue(this.props.infoAppointment.id);
                             }} type="radio" name="appointment" className="input-radio" value={code} />
                         </div>
+                        
                         <div className="col-md-3 mx-auto">
                             <ul>
                                 <li><strong>Fecha:</strong> {date}</li>

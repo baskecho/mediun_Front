@@ -32,7 +32,7 @@ class MedicalAppointments extends Component
 
     check = () =>
     {
-        if(this.props.selectedValue === '')
+        if(this.state.selectedValue === '')
         {
             Swal.fire({
                 type: 'error',
@@ -55,6 +55,10 @@ class MedicalAppointments extends Component
         this.setState({
             selectValue
         });
+    }
+
+    reload = () => {
+        window.location.reload();
     }
 
     
@@ -124,6 +128,8 @@ class MedicalAppointments extends Component
                                 <form onSubmit={this.cancelActions}>
                                     <CharactersPanelQuery/>
                                     <div className="medical_button_collection">
+
+
                                         
                                         <Mutation mutation={gql`mutation ($id: String!, $patient: String!){
                                             assignSchedule(
@@ -155,15 +161,37 @@ class MedicalAppointments extends Component
 
                                                         <button onClick={(e)=>{
 
-                                                            console.log("Hola amigos, vamos a eliminar jaja");
-                                                            console.log(this.state.selectValue);
+                                                            if(this.state.selectedValue  === '')
+                                                                {
+                                                                    Swal.fire({
+                                                                        type: 'error',
+                                                                        title: 'Ocurrio un problema',
+                                                                        text: 'Debe seleccionar un cita o puede que no tenca citas'
+                                                                    })
+                                                                }
+                                                                else
+                                                                {    
+                                                                    addTodo({
+                                                                        variables: {
+                                                                            id: this.state.selectValue,
+                                                                            patient: ""
+                                                                        }
+                                                                    });
+                                                                }
 
-                                                            addTodo({
-                                                            variables: {
-                                                                id: this.state.selectValue,
-                                                                patient: ""
-                                                            }
-                                                        });
+                                                            Swal.fire(
+                                                                '¡Correcto!',
+                                                                'Cita medica eliminada',
+                                                                'satisfactoriamente'
+                                                                )
+                                                            Swal.fire({
+                                                                position: 'top-center',
+                                                                type: 'success',
+                                                                title: 'La cita fue eliminada',
+                                                                showConfirmButton: false,
+                                                                timer: 2500
+                                                            })
+                                                    setTimeout(this.reload, 1000);
 
                                                         }} className="medical_button">Eliminar</button>
                                                     ) 
@@ -174,13 +202,8 @@ class MedicalAppointments extends Component
 
 
 
-                                        
 
-
-
-
-
-                                            <Link  onClick={this.check} to={() => this.props.selectedValue === '' ? '/medical_appointments' : "/edit_appointments" }>
+                                            <Link  onClick={this.check} to="/edit_appointments">
                                                 <button type="submit" className="medical_button medical_button_edit">Editar</button>
                                             </Link>
 
