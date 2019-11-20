@@ -21,7 +21,7 @@ class Panel extends Component
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
-            const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
+            //const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
             const {identification,  years } = this.props.AppointmentsDates;
 
             const moreDate = {
@@ -57,6 +57,7 @@ class Panel extends Component
                         moreDates = {moreDate}
                         moreDateTwo = {moreDateTwo}
                         getSelectedValue = {this.props.getSelectedValue}
+                        selectValue = {this.props.selectValue}
                     />
                 ))}
             </React.Fragment>;

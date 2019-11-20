@@ -11,7 +11,8 @@ import ApolloClient from 'apollo-boost';
 
 
 const client = new ApolloClient({
-    uri: 'http://35.245.16.64:5000/graphql',
+    //uri: 'http://35.245.16.64:5000/graphql',
+    uri: 'http://35.228.197.39/graphql',
     onError: ({networkError, graphQLErrors}) =>{
         console.log('graphQLErrors', graphQLErrors);
         console.log('networkError', networkError);

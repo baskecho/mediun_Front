@@ -15,7 +15,7 @@ import {gql} from 'apollo-boost';
 
 
 
-
+let valor="";
 
 
 class MedicalAppointments extends Component
@@ -23,6 +23,33 @@ class MedicalAppointments extends Component
     state = {
         selectValue: ""
     }
+
+    
+
+   /* componentDidMount() 
+    {
+
+        const selectValueLS = localStorage.getItem('selectValue');
+
+        
+            this.setState({
+                selectValue  : JSON.parse(selectValueLS),
+            });
+    };
+
+    componentDidUpdate()
+    {
+        localStorage.setItem(
+            'selectValue', JSON.stringify(this.state.selectValue)
+        );
+    };*/
+
+
+
+
+
+
+
 
     deleteMedicalAppointment = () =>
     {
@@ -55,6 +82,7 @@ class MedicalAppointments extends Component
         this.setState({
             selectValue
         });
+        valor = selectValue;
     }
 
     reload = () => {
@@ -89,7 +117,7 @@ class MedicalAppointments extends Component
                         if(loading) return <p>Cargando.....</p>
                         if(error) return <p>Error!</p>
 
-                        this.props.getAppointment(data.scheduleByPatient);
+                        //this.props.getAppointment(data.scheduleByPatient);
 
                         return (
                             <Panel
@@ -99,6 +127,7 @@ class MedicalAppointments extends Component
                                         getSelectedValue = {this.getSelectedValue}
                                         scheduleByPatient = {data.scheduleByPatient}
                                         apiLogin = {this.props.apiLogin}
+                                        selectValue = {this.state.selectValue}
                                     />
                         )
                     }
@@ -161,7 +190,7 @@ class MedicalAppointments extends Component
 
                                                         <button onClick={(e)=>{
 
-                                                            if(this.state.selectedValue  === '')
+                                                            if(valor  === '')
                                                                 {
                                                                     Swal.fire({
                                                                         type: 'error',
@@ -170,10 +199,12 @@ class MedicalAppointments extends Component
                                                                     })
                                                                 }
                                                                 else
-                                                                {    
+                                                                {   
+
+                                                                    console.log(this.state.selectValue);
                                                                     addTodo({
                                                                         variables: {
-                                                                            id: this.state.selectValue,
+                                                                            id: valor,
                                                                             patient: ""
                                                                         }
                                                                     });
@@ -201,11 +232,11 @@ class MedicalAppointments extends Component
                                         </Mutation>
 
 
-
-
-                                            <Link  onClick={this.check} to="/edit_appointments">
+                                            {/*
+                                                <Link  onClick={this.check} to="/edit_appointments">
                                                 <button type="submit" className="medical_button medical_button_edit">Editar</button>
-                                            </Link>
+                                                </Link>
+                                             */}
 
 
                                         <Link to="/schedule_appointments">

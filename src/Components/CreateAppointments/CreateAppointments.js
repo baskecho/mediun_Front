@@ -15,7 +15,7 @@ class CreateAppointments extends Component
     render() 
     { 
 
-        let Especialidad = "";
+        /*let Especialidad = "";
         let fecha = "";
         let Medico = "";
 
@@ -36,6 +36,7 @@ class CreateAppointments extends Component
 
         console.log(this.props.scheduleByPatient);
 
+            */
 
 
         return ( 

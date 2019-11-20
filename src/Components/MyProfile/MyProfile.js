@@ -8,8 +8,8 @@ class MyProfile extends Component
 {
     render() 
     {
-        const {date,  years, identification} = this.props.AppointmentsDates;
-        const {name ,id, email, nickname} = this.props.apiLogin;
+        //const {date,  years, identification} = this.props.AppointmentsDates;
+        const {name ,id, email} = this.props.apiLogin;
 
 
 
@@ -28,13 +28,13 @@ class MyProfile extends Component
                                     <li><strong>ID</strong></li>
                                     <label>{id}</label>
                                     <li><strong>EDAD</strong></li>
-                                    <label>{years} años</label>
+                                    <label>25 años</label>
                                 </ul>
                             </div>
                             <div className="col-md-6">
                                 <ul>
                                     <li><strong>FECHA DE NACIMIENTO</strong></li>
-                                    <label>{date}</label>
+                                    <label>23-10-2000</label>
                                     <li><strong>CORREO</strong></li>
                                     <label>{email}</label>
                                 </ul>

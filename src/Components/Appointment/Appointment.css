@@ -3,6 +3,12 @@
     border-color: #575757;
     padding: 2%;
 }
+.container-appointment-select{
+    border-style: solid;
+    border-color: #575757;
+    padding: 2%;
+    background-color: #c9c5c5;
+}
 .input-radio{
     height: 45px;
     width: 45px;

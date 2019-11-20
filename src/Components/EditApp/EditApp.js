@@ -7,9 +7,9 @@ class EditApp extends Component
     render() 
     { 
 
-        let Especialidad = "";
-        let fecha = "";
-        let Medico = "";
+       // let Especialidad = "";
+        //let fecha = "";
+        //let Medico = "";
 
         /*
             if(this.props.titlePanel === "Agendar una cita")

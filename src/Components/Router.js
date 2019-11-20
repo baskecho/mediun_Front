@@ -17,9 +17,8 @@ import History from './History/History';
 
     //GraphQL
 
-
-import {Mutation, Query} from 'react-apollo';
-import {gql} from 'apollo-boost';
+//import {Mutation, Query} from 'react-apollo';
+//import {gql} from 'apollo-boost';
 
 
 
@@ -33,7 +32,7 @@ import userDatestest from '../Simulación/userDates.json';
 
 
 
-
+/*
 const CharactersQuery = () => {
     return <Query query={gql`query {
             notifById(id: 8) {
@@ -94,7 +93,7 @@ const CharactersQMutation = () => {
             }
         }
         </Mutation>
-};
+};*/
 
 
 
@@ -227,10 +226,10 @@ class Router extends Component
     //**********************APPOINTMENT*************************/
 
 
-    getAppointment = (schedulePatient) =>{
+   /* getAppointment = (schedulePatient) =>{
         const prueba = schedulePatient;
 
-    }
+    }*/
 
     deleteAppointment = () =>{
 
