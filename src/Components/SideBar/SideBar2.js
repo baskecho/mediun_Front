@@ -15,7 +15,11 @@ render() {
         this.props.closeSesion();
     }
 
-
+    if(Object.keys(this.props.apiLogin).length === 0)
+    {
+        return null;
+    }
+    
     return (
         <div className="border-bar">
             <Menu>
@@ -24,7 +28,7 @@ render() {
                 </div>
                 <div className="div-image-profile">
                     <img className="im-side-bar" src="https://i.ibb.co/s2Zgzyx/imagen-profile.png" width="85" height="85" alt="imagen barra"/>
-                    <label className="la-side-bar">{this.props.AppointmentsDates.userName}</label>
+                    <label className="la-side-bar">{this.props.apiLogin.nickname}</label>
                 </div>
                 <Link to={"/profile"} className="l-side-bar">Mi Perfil</Link>
                 <Link to={"/medical_appointments"} className="l-side-bar">Mis citas medicas</Link>

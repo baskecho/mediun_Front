@@ -15,10 +15,91 @@ import EditAppointments from './EditAppointments/EditAppointments'
 import History from './History/History';
 
 
+    //GraphQL
+
+//import {Mutation, Query} from 'react-apollo';
+//import {gql} from 'apollo-boost';
+
+
+
+
+
 //Pruebas JSON
 
 import loginTest from '../Simulación/login.json';
 import userDatestest from '../Simulación/userDates.json';
+
+
+
+
+/*
+const CharactersQuery = () => {
+    return <Query query={gql`query {
+            notifById(id: 8) {
+                name
+                date
+                email
+            }
+            }`}>
+        {
+            ({loading, error, data }) => {
+                if(loading) return <p>Cargando.....</p>
+                if(error) return <p>Error!</p>
+
+                console.log(data);
+                return <p>hola desde Query</p>
+
+            }
+        }
+        </Query>
+};
+
+
+const CharactersQMutation = () => {
+    return <Mutation mutation={gql`mutation ($name: String!, $date: String!, $email: String!){
+            createNotif(user: {
+                name: $name
+                date: $date
+                email: $email
+            }) {
+                email
+            }
+        }`}>
+        {
+            (addTodo,{data }) => {
+
+                if(data == null)
+                {
+                    
+                }
+                else
+                {
+                    console.log(data.createNotif);
+                }
+                
+                return(
+                        <button onClick={(e)=>{
+                            e.preventDefault();
+                            addTodo({
+                                variables: {
+                                    name: "Alex",
+                                    date: "16/11/2019",
+                                    email: "rafaguaa@unal.edu.co"
+                                }
+                            });
+                        }}>Add Todo</button>
+                    ) 
+                
+            }
+        }
+        </Mutation>
+};*/
+
+
+
+
+
+
 
 class Router extends Component 
 {
@@ -26,7 +107,9 @@ class Router extends Component
         titlePanel: [],
         AppointmentsDates : {},
         render : '/',
-        selectedValue : ''
+        selectedValue : '',
+        apiLogin : {},
+        schedulePatient : []
     };
 
     componentDidMount() 
@@ -35,13 +118,20 @@ class Router extends Component
             titlePanel : ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial", "Editar cita"]
         });
         const AppointmentsDatesLS = localStorage.getItem('AppointmentsDates');
-        const renderLS = localStorage.getItem('render')
+        const renderLS = localStorage.getItem('render');
+        //------------------------------------------------------------------------------
 
+        const apiLoginLS = localStorage.getItem('apiLogin');
+
+        //------------------------------------------------------------------------------
         if(AppointmentsDatesLS)
         {
             this.setState({
                 AppointmentsDates  : JSON.parse(AppointmentsDatesLS),
-                render : JSON.parse(renderLS)
+                render : JSON.parse(renderLS),
+
+            //-------------------------------------------------------------
+                apiLogin : JSON.parse(apiLoginLS)
             });
         }
     };
@@ -54,12 +144,28 @@ class Router extends Component
         localStorage.setItem(
             'render', JSON.stringify(this.state.render)
         );
+        //-----------------------------------------------------------------
+
+        localStorage.setItem(
+            'apiLogin', JSON.stringify(this.state.apiLogin)
+        );
+        
     };
 
 
 
-    establishLogiN = (infLogin) =>
+    establishLogiN = (infLogin, apiLogin) =>
     {
+
+        //------------------------------------------------------------
+
+        //console.log(apiLogin.createSession);
+
+        this.setState({
+            apiLogin : apiLogin.createSession
+        });
+
+        //-------------------------------------------------------------
         const loginValues = loginTest;
 
         const getLoginValues = loginValues.filter((loginValue)=>(
@@ -98,6 +204,14 @@ class Router extends Component
             });
     };
 
+    setRender = (render) =>{
+
+        console.log("¿Que paso?");
+        this.setState({
+            render
+        });
+    };
+
 
 
     getSelectedValue = (selectedValue) =>{
@@ -109,6 +223,13 @@ class Router extends Component
     };
 
 
+    //**********************APPOINTMENT*************************/
+
+
+   /* getAppointment = (schedulePatient) =>{
+        const prueba = schedulePatient;
+
+    }*/
 
     deleteAppointment = () =>{
 
@@ -267,6 +388,9 @@ class Router extends Component
         })
     }
 
+
+    //*********************************************************/
+
     reload = () => {
         window.location.reload();
     }
@@ -275,6 +399,11 @@ class Router extends Component
     {   
         return ( 
             <div>
+                {/*
+                    <CharactersQMutation/>
+                    <CharactersQuery/>
+                */}
+                
                 <BrowserRouter>
                         <Redirect from="/" to= {this.state.render}/>
                         <Redirect from="/edit_appointments" to= {this.state.render}/>
@@ -294,6 +423,7 @@ class Router extends Component
                                 closeSesion = {this.closeSesion}
                                 AppointmentsDates = {this.state.AppointmentsDates}
                                 updateAppointment = {this.updateAppointment}
+                                apiLogin = {this.state.apiLogin}
                             />
                         )}/>
                         <Route exact path="/edit_appointments" render={()=>(
@@ -303,6 +433,7 @@ class Router extends Component
                                 AppointmentsDates = {this.state.AppointmentsDates}
                                 selectedValue = {this.state.selectedValue}
                                 editAppointment = {this.editAppointment}
+                                apiLogin = {this.state.apiLogin}
                             />
                         )}/>
                         <Route exact path="/medical_appointments" render={()=>(
@@ -313,6 +444,9 @@ class Router extends Component
                                 getSelectedValue = {this.getSelectedValue}
                                 deleteAppointment = {this.deleteAppointment}
                                 selectedValue = {this.state.selectedValue}
+                                apiLogin = {this.state.apiLogin}
+                                getAppointment = {this.getAppointment}
+                                setRender = {this.setRender}
                             />
                         )}/>
                         <Route exact path="/profile" render={()=>(
@@ -320,6 +454,7 @@ class Router extends Component
                                 titlePanel = {this.state.titlePanel[2]}
                                 AppointmentsDates = {this.state.AppointmentsDates}
                                 closeSesion = {this.closeSesion}
+                                apiLogin = {this.state.apiLogin}
                             />
                         )}/>
                         <Route exact path="/my_history" render={()=>(
@@ -327,6 +462,7 @@ class Router extends Component
                                 titlePanel = {this.state.titlePanel[3]}
                                 closeSesion = {this.closeSesion}
                                 AppointmentsDates = {this.state.AppointmentsDates}
+                                apiLogin = {this.state.apiLogin}
                             />
                         )}/>
                         <Route component={Error}/>

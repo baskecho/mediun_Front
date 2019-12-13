@@ -4,6 +4,7 @@ import './Panel.css';
 import Appointment from '../Appointment/Appointment';
 import MyProfile from '../MyProfile/MyProfile';
 import CreateAppointments from '../CreateAppointments/CreateAppointments';
+import EditApp from '../EditApp/EditApp';
 
 class Panel extends Component 
 {
@@ -15,27 +16,48 @@ class Panel extends Component
         {
             renderContainer = <MyProfile
                                 AppointmentsDates = {this.props.AppointmentsDates}
+                                apiLogin = {this.props.apiLogin}
                             />;
         }
         else if(this.props.titlePanel === "Mis citas medicas")
         {
-            const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
-            const {name, identification, email, years } = this.props.AppointmentsDates;
+            //const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
+            const {identification,  years } = this.props.AppointmentsDates;
 
             const moreDate = {
-                name, 
                 identification, 
-                email, 
                 years
             }
 
+            const scheduleByPatient = this.props.scheduleByPatient;
+
+            if(Object.keys(this.props.apiLogin).length === 0)
+            {
+                return null;
+            }
+
+            const {email, id, name, nickname} = this.props.apiLogin;
+
+            const moreDateTwo = {
+                name,
+                id, 
+                email, 
+                nickname
+            }
+
+            console.log(this.props.apiLogin);
+
+            console.log(scheduleByPatient);
+
             renderContainer = <React.Fragment>
-                {Object.keys(AppointmentsDates).map((date)=>(
+                {Object.keys(scheduleByPatient).map((date)=>(
                     <Appointment
                         key  = {date}
-                        infoAppointments = {AppointmentsDates[date]}
+                        infoAppointment = {scheduleByPatient[date]}
                         moreDates = {moreDate}
+                        moreDateTwo = {moreDateTwo}
                         getSelectedValue = {this.props.getSelectedValue}
+                        selectValue = {this.props.selectValue}
                     />
                 ))}
             </React.Fragment>;
@@ -48,11 +70,12 @@ class Panel extends Component
                                 dateRef = {this.props.dateRef}
                                 doctorRef = {this.props.doctorRef}
                                 titlePanel = {this.props.titlePanel}
+                                scheduleByPatient = {this.props.scheduleByPatient}
                             />
         }
         else if (this.props.titlePanel === "Editar cita")
         {
-            renderContainer = <CreateAppointments
+            renderContainer = <EditApp
                                 updateAppointment = {this.props.updateAppointment}
                                 medicalappointments = {this.props.AppointmentsDates.medicalappointments}
                                 specialtyRef = {this.props.specialtyRef}
@@ -60,6 +83,7 @@ class Panel extends Component
                                 doctorRef = {this.props.doctorRef}
                                 titlePanel = {this.props.titlePanel}
                                 selectedValue = {this.props.selectedValue}
+                                scheduleByPatient = {this.props.scheduleByPatient}
                             />
         }
 

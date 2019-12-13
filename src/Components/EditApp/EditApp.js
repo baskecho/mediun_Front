@@ -1,25 +1,18 @@
 import React, { Component } from 'react'
 
-import './CreateAppointments.css';
+import './EditApp.css';
 
-class CreateAppointments extends Component 
+class EditApp extends Component 
 {
-
-
-    
-
-
-
-
-
     render() 
     { 
 
-        /*let Especialidad = "";
-        let fecha = "";
-        let Medico = "";
+       // let Especialidad = "";
+        //let fecha = "";
+        //let Medico = "";
 
-        if(this.props.titlePanel === "Agendar una cita")
+        /*
+            if(this.props.titlePanel === "Agendar una cita")
         {
             Especialidad = "Especialidad";
             Medico = "Medico"
@@ -33,11 +26,12 @@ class CreateAppointments extends Component
             fecha = "Fecha actual de la cita: " + appointment[0].date;
             Medico = appointment[0].doctor;
         }
+        
+        
+        
+         */
 
         console.log(this.props.scheduleByPatient);
-
-            */
-
 
         return ( 
             <div className="container">
@@ -50,10 +44,19 @@ class CreateAppointments extends Component
                                 <div className="form-group">
                                     <input ref={this.props.specialtyRef} list="especialidad" className="style-input-create" placeholder={"Fecha / Doctor / Especialidad"}/>
                                     <datalist id="especialidad">
-                                        
+                                    {/*
+
                                         {Object.keys(this.props.scheduleByPatient).map((date)=>(
                                             <option key={date} value={this.props.scheduleByPatient[date].date.concat(" / ").concat(this.props.scheduleByPatient[date].doctor).concat(" / ").concat(this.props.scheduleByPatient[date].specialism)}/> 
+                                            
                                         ))}
+
+                                     */}
+                                    
+                                        <option value= "Hola mis amigos"/>
+                                        <option value= "Hola mis am"/>
+                                        <option value= "Hola mis mos"/>
+                                        
 
                                     </datalist>
                                 </div>
@@ -85,4 +88,4 @@ class CreateAppointments extends Component
                 </div>
         );
     }
-};export default CreateAppointments;
+};export default EditApp;
