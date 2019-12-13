@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 import SideBar2 from '../SideBar/SideBar2';
 import Panel from '../Panel/Panel';
@@ -13,6 +14,7 @@ import {gql} from 'apollo-boost';
 
 let datosQuery = "";
 let idUpdate ="";
+let dateUpdate="";
 
 
 
@@ -42,6 +44,7 @@ class ScheduleAppointment extends Component
         console.log(prueba[0].id);
             
         idUpdate = prueba[0].id;
+        dateUpdate = prueba[0].date;
         
 
     
@@ -135,6 +138,7 @@ class ScheduleAppointment extends Component
             }
 
             const name = this.props.apiLogin.name;
+            const email = this.props.apiLogin.email;
 
 
         const CharactersSchedulePanelQuery = this.graphqlAppointments();
@@ -160,8 +164,6 @@ class ScheduleAppointment extends Component
 
                                  */}
                                 <CharactersSchedulePanelQuery/>
-                                
-                                
 
                                 
                                     <Mutation mutation={gql`mutation ($id: String!, $patient: String!){
@@ -187,7 +189,44 @@ class ScheduleAppointment extends Component
                                                 //console.log(this.userRef.current.value)
                                                 //console.log(this.passwordRef.current.value);
                                                 //this.establishLogiN(data);
-                                                console.log(data);
+                                                console.log(data.assignSchedule);
+                                                console.log(name);
+
+
+                                                axios.post('http://35.245.16.64:5000/graphql', {
+                                                    query: gql`mutation ($name: String!, $email: String!, $date: String!){
+                                                                        createNotif(user: {
+                                                                            name: $name
+                                                                            email: $email
+                                                                            date: $date
+                                                                        }) {
+                                                                            email
+                                                                        }
+                                                                    }`,
+                                                    variables: {
+                                                        name: name,
+                                                        email: "lgavendanoa@unal.edu.co",
+                                                        date: dateUpdate,
+                                                    },
+                                                        })
+                                                       /* .then( (response) => {
+                                                        
+                                                                //console.log(response);
+                                                            
+                                                                }
+                                                            )*/
+
+
+
+
+
+
+
+
+
+
+
+
                                             }
                                             
                                             return(
@@ -227,7 +266,6 @@ class ScheduleAppointment extends Component
                                                     }} className="schedule_button">Agendar</button>
                                                     </div>
                                                 ) 
-                                            
                                         }
                                     }
                                     </Mutation>
