@@ -223,13 +223,6 @@ class Router extends Component
     };
 
 
-    //**********************APPOINTMENT*************************/
-
-
-   /* getAppointment = (schedulePatient) =>{
-        const prueba = schedulePatient;
-
-    }*/
 
     deleteAppointment = () =>{
 
