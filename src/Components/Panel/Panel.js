@@ -4,7 +4,7 @@ import './Panel.css';
 import Appointment from '../Appointment/Appointment';
 import MyProfile from '../MyProfile/MyProfile';
 import CreateAppointments from '../CreateAppointments/CreateAppointments';
-import EditApp from '../EditApp/EditApp';
+//import EditApp from '../EditApp/EditApp';
 
 class Panel extends Component 
 {
@@ -22,12 +22,12 @@ class Panel extends Component
         else if(this.props.titlePanel === "Mis citas medicas")
         {
             //const AppointmentsDates = this.props.AppointmentsDates.medicalappointments;
-            const {identification,  years } = this.props.AppointmentsDates;
+            //const {identification,  years } = this.props.AppointmentsDates;
 
-            const moreDate = {
+            /*const moreDate = {
                 identification, 
                 years
-            }
+            }*/
 
             const scheduleByPatient = this.props.scheduleByPatient;
 
@@ -54,7 +54,7 @@ class Panel extends Component
                     <Appointment
                         key  = {date}
                         infoAppointment = {scheduleByPatient[date]}
-                        moreDates = {moreDate}
+                           // moreDates = {moreDate}
                         moreDateTwo = {moreDateTwo}
                         getSelectedValue = {this.props.getSelectedValue}
                         selectValue = {this.props.selectValue}
@@ -65,15 +65,15 @@ class Panel extends Component
         else if(this.props.titlePanel === "Agendar una cita")
         {
             renderContainer = <CreateAppointments
-                                updateAppointment = {this.props.updateAppointment}
+                                //updateAppointment = {this.props.updateAppointment}
                                 specialtyRef = {this.props.specialtyRef}
-                                dateRef = {this.props.dateRef}
-                                doctorRef = {this.props.doctorRef}
-                                titlePanel = {this.props.titlePanel}
+                                //dateRef = {this.props.dateRef}
+                                //doctorRef = {this.props.doctorRef}
+                                //titlePanel = {this.props.titlePanel}
                                 scheduleByPatient = {this.props.scheduleByPatient}
                             />
         }
-        else if (this.props.titlePanel === "Editar cita")
+        /*else if (this.props.titlePanel === "Editar cita")
         {
             renderContainer = <EditApp
                                 updateAppointment = {this.props.updateAppointment}
@@ -85,7 +85,7 @@ class Panel extends Component
                                 selectedValue = {this.props.selectedValue}
                                 scheduleByPatient = {this.props.scheduleByPatient}
                             />
-        }
+        }*/
 
 
         return (  

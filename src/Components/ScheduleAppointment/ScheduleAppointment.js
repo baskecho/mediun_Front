@@ -24,8 +24,8 @@ class ScheduleAppointment extends Component
     
 
     specialtyRef = React.createRef();
-    dateRef = React.createRef();
-    doctorRef = React.createRef();
+    //dateRef = React.createRef();
+    //doctorRef = React.createRef();
 
     updateAppointment = () =>
     {
@@ -111,8 +111,8 @@ class ScheduleAppointment extends Component
                             <Panel
                                 titlePanel=  {this.props.titlePanel}
                                 specialtyRef = {this.specialtyRef}
-                                dateRef = {this.dateRef}
-                                doctorRef = {this.doctorRef}
+                                //dateRef = {this.dateRef}
+                                //doctorRef = {this.doctorRef}
                                 scheduleByPatient = {data.scheduleByPatient}
                             />
                         )
@@ -249,11 +249,7 @@ class ScheduleAppointment extends Component
 
                                                     });
 
-                                                    Swal.fire(
-                                                    '¡Correcto!',
-                                                    'Cita medica creada',
-                                                    'satisfactoriamente'
-                                                    )
+                                                    
 
                                                     Swal.fire({
                                                         position: 'top-center',

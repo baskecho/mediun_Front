@@ -6,12 +6,12 @@ import './Router.css';
 
 //Componentes 
 import Login from './Login/Login';
-import Error from './Error/Error';
+//import Error from './Error/Error';
 import Header from './Header/Heaer';
 import Profile from './Profile/Profile';
 import ScheduleAppointment from './ScheduleAppointment/ScheduleAppointment';
 import MedicalAppointments from './MedicalAppointments/MedicalAppointments';
-import EditAppointments from './EditAppointments/EditAppointments'
+//import EditAppointments from './EditAppointments/EditAppointments'
 import History from './History/History';
 
 
@@ -419,7 +419,8 @@ class Router extends Component
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
-                        <Route exact path="/edit_appointments" render={()=>(
+                        {/* 
+                            <Route exact path="/edit_appointments" render={()=>(
                             <EditAppointments
                                 titlePanel = {this.state.titlePanel[4]}
                                 closeSesion = {this.closeSesion}
@@ -429,6 +430,7 @@ class Router extends Component
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
+                        */}
                         <Route exact path="/medical_appointments" render={()=>(
                             <MedicalAppointments
                                 titlePanel = {this.state.titlePanel[1]}
@@ -458,7 +460,10 @@ class Router extends Component
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
-                        <Route component={Error}/>
+                        {/*
+                            <Route component={Error}/>
+                         */}
+                        
                     </Switch>
                 </BrowserRouter>
             </div>

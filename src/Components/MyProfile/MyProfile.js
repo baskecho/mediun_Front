@@ -35,7 +35,7 @@ class MyProfile extends Component
             });
 
      
-            doc.save('a4.pdf')
+            doc.save('Medical Excuses.pdf')
 
         }
 
@@ -69,7 +69,7 @@ class MyProfile extends Component
                                         e.preventDefault();
                                         
 
-                                        axios.get('http://35.223.9.64:5006/medical_excuses')
+                                        axios.get('http://34.83.81.244:5006/medical_excuses')
                                         .then((response)=>{
                                             console.log(response.data[0].nombre_paciente);
                                             this.createPdf(response.data);
