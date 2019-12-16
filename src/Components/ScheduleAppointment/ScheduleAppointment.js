@@ -146,7 +146,7 @@ class ScheduleAppointment extends Component
             <div className="mx-auto">
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
-                    AppointmentsDates = {this.props.AppointmentsDates}
+                    //AppointmentsDates = {this.props.AppointmentsDates}
                     apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">

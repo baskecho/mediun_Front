@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import {gql} from 'apollo-boost';
+
 
 import './MyProfile.css';
 import jsPDF from 'jspdf';
@@ -69,12 +71,31 @@ class MyProfile extends Component
                                         e.preventDefault();
                                         
 
-                                        axios.get('http://34.83.81.244:5006/medical_excuses')
+                                        /*axios.get('http://34.83.81.244:5006/medical_excuses')
                                         .then((response)=>{
                                             console.log(response.data[0].nombre_paciente);
                                             this.createPdf(response.data);
 
-                                        })
+                                        })*/
+
+
+                                        axios.post('http://35.245.16.64:5000/graphql', {
+                                            query: gql`query{allExcuses{
+                                                    _id
+                                                    fecha
+                                                    hora
+                                                    id_usuario
+                                                    nombre_paciente
+                                                    nombre_medico
+                                                    razon
+                                                    dias_incapacidad
+                                                    codigo
+                                                    }}`
+                                                }).then((response)=>{
+                                                    console.log(response.data.data.allExcuses);
+                                                    this.createPdf(response.data.data.allExcuses);
+                                                })
+
                                         
                                     }}>Descargar</a>
                                 </ul>

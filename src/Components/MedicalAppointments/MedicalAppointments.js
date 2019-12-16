@@ -24,52 +24,6 @@ class MedicalAppointments extends Component
         selectValue: ""
     }
 
-    
-
-   /* componentDidMount() 
-    {
-
-        const selectValueLS = localStorage.getItem('selectValue');
-
-        
-            this.setState({
-                selectValue  : JSON.parse(selectValueLS),
-            });
-    };
-
-    componentDidUpdate()
-    {
-        localStorage.setItem(
-            'selectValue', JSON.stringify(this.state.selectValue)
-        );
-    };*/
-
-
-
-
-
-
-
-
-    deleteMedicalAppointment = () =>
-    {
-        console.log("Vamos a eliminar:");
-        console.log(this.state.selectValue);
-    };
-
-    check = () =>
-    {
-        if(this.state.selectedValue === '')
-        {
-            Swal.fire({
-                type: 'error',
-                title: 'Ocurrio un problema',
-                text: 'Todos los campos son obligatorios'
-            })
-        }
-    }
-
-
     cancelActions = (e) =>
     {
         e.preventDefault();
@@ -78,7 +32,6 @@ class MedicalAppointments extends Component
 
     getSelectedValue = (selectValue) =>
     {
-        console.log(selectValue);
         this.setState({
             selectValue
         });
@@ -88,7 +41,6 @@ class MedicalAppointments extends Component
     reload = () => {
         window.location.reload();
     }
-
     
     graphqlAppointments = () =>
     {
@@ -99,7 +51,6 @@ class MedicalAppointments extends Component
             }
 
             const name = this.props.apiLogin.name;
-            
 
             return <Query query={gql`query ($name:String!){
                     scheduleByPatient(patient: $name){
@@ -116,14 +67,9 @@ class MedicalAppointments extends Component
                     ({loading, error, data }) => {
                         if(loading) return <p>Cargando.....</p>
                         if(error) return <p>Error!</p>
-
-                        //this.props.getAppointment(data.scheduleByPatient);
-
                         return (
                             <Panel
                                         titlePanel=  {this.props.titlePanel}
-                                        AppointmentsDates = {this.props.AppointmentsDates}
-                                        //getSelectedValue = {this.props.getSelectedValue}
                                         getSelectedValue = {this.getSelectedValue}
                                         scheduleByPatient = {data.scheduleByPatient}
                                         apiLogin = {this.props.apiLogin}
@@ -146,20 +92,15 @@ class MedicalAppointments extends Component
             <div className="mx-auto">
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
-                    AppointmentsDates = {this.props.AppointmentsDates}
                     apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-11 mx-auto">
                             <div>
-                                
                                 <form onSubmit={this.cancelActions}>
                                     <CharactersPanelQuery/>
                                     <div className="medical_button_collection">
-
-
-                                        
                                         <Mutation mutation={gql`mutation ($id: String!, $patient: String!){
                                             assignSchedule(
                                                 id: $id
@@ -180,36 +121,27 @@ class MedicalAppointments extends Component
                                                 }
                                                 else
                                                 {
-                                                    //console.log(this.userRef.current.value)
-                                                    //console.log(this.passwordRef.current.value);
-                                                    //this.establishLogiN(data);
-                                                    console.log(data);
+                                                    console.log(" ");
                                                 }
-                                                
                                                 return(
-
-                                                        <button onClick={(e)=>{
-
-                                                            if(valor  === '')
-                                                                {
-                                                                    Swal.fire({
-                                                                        type: 'error',
-                                                                        title: 'Ocurrio un problema',
-                                                                        text: 'Debe seleccionar un cita o puede que no tenca citas'
-                                                                    })
-                                                                }
-                                                                else
-                                                                {   
-
-                                                                    console.log(this.state.selectValue);
-                                                                    addTodo({
-                                                                        variables: {
-                                                                            id: valor,
-                                                                            patient: ""
-                                                                        }
-                                                                    });
-                                                                }
-
+                                                    <button onClick={(e)=>{
+                                                        if(valor  === '')
+                                                            {
+                                                                Swal.fire({
+                                                                    type: 'error',
+                                                                    title: 'Ocurrio un problema',
+                                                                    text: 'Debe seleccionar un cita o puede que no tenca citas'
+                                                                })
+                                                            }
+                                                            else
+                                                            {   
+                                                                addTodo({
+                                                                    variables: {
+                                                                        id: valor,
+                                                                        patient: ""
+                                                                    }
+                                                                });
+                                                            }
                                                             Swal.fire(
                                                                 '¡Correcto!',
                                                                 'Cita medica eliminada',
@@ -222,7 +154,7 @@ class MedicalAppointments extends Component
                                                                 showConfirmButton: false,
                                                                 timer: 2500
                                                             })
-                                                    setTimeout(this.reload, 1000);
+                                                        setTimeout(this.reload, 1000);
 
                                                         }} className="medical_button">Eliminar</button>
                                                     ) 
@@ -230,21 +162,11 @@ class MedicalAppointments extends Component
                                             }
                                         }
                                         </Mutation>
-
-
-                                            {/*
-                                                <Link  onClick={this.check} to="/edit_appointments">
-                                                <button type="submit" className="medical_button medical_button_edit">Editar</button>
-                                                </Link>
-                                             */}
-
-
                                         <Link to="/schedule_appointments">
                                             <button type="submit" className="medical_button medical_button_add">Agregar cita</button>
                                         </Link>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>

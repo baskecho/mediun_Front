@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 import './Login.css';
 
 
@@ -16,18 +17,7 @@ class Login extends Component{
 
     establishLogiN = (apiLogin) =>
     {
-
-        //console.log(apiLogin);
-
-        const user = this.userRef.current.value,
-            password = this.passwordRef.current.value;
-
-        const infLogin = {
-            user, 
-            password 
-        }
-
-        this.props.establishLogiN(infLogin , apiLogin);
+        this.props.establishLogiN(apiLogin);
     };
 
 
@@ -39,7 +29,6 @@ class Login extends Component{
                     <div className="row">
                         <div className="col-md-5 mx-auto ">
                             <div className="card p-5 border border-dark">
-
                                 <Mutation mutation={gql`mutation ($email: String!, $password: String!){
                                         createSession(session: {
                                             email: $email
@@ -84,33 +73,31 @@ class Login extends Component{
                                                         <button  onClick={(e)=>{
                                                         e.preventDefault();
 
-                                                        console.log(this);
-
-                                                        addTodo({
+                                                        if(this.userRef.current.value ==='' || this.passwordRef.current.value === '')
+                                                        {
+                                                            Swal.fire({
+                                                                type: 'error',
+                                                                title: 'Ocurrio un problema',
+                                                                text: 'El usuario o la contraseña no es correcta'
+                                                            })
+                                                        }
+                                                        else
+                                                        {
+                                                            addTodo({
                                                             variables: {
                                                                 email: this.userRef.current.value,
                                                                 password: this.passwordRef.current.value
-                                                            }
-                                                        });
+                                                            }});
+                                                        }
+                                                        
 
                                                     }} className="button-login mt-1">Entrar</button>
                                                         <a href="/" className="link-login">¿No puede iniciar sesión?</a>
                                                     </form>
                                                 ) 
-                                            
                                         }
                                     }
-
-
-
-
-                                    
-
-                            </Mutation>
-
-
-
-
+                                </Mutation>
                             </div>
                         </div>
                     </div>

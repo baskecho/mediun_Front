@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 import './Router.css';
 
@@ -12,7 +12,7 @@ import Profile from './Profile/Profile';
 import ScheduleAppointment from './ScheduleAppointment/ScheduleAppointment';
 import MedicalAppointments from './MedicalAppointments/MedicalAppointments';
 //import EditAppointments from './EditAppointments/EditAppointments'
-import History from './History/History';
+//import History from './History/History';
 
 
     //GraphQL
@@ -26,8 +26,8 @@ import History from './History/History';
 
 //Pruebas JSON
 
-import loginTest from '../Simulación/login.json';
-import userDatestest from '../Simulación/userDates.json';
+//import loginTest from '../Simulación/login.json';
+//import userDatestest from '../Simulación/userDates.json';
 
 
 
@@ -105,7 +105,7 @@ class Router extends Component
 {
     state = { 
         titlePanel: [],
-        AppointmentsDates : {},
+        //AppointmentsDates : {},
         render : '/',
         selectedValue : '',
         apiLogin : {},
@@ -117,17 +117,17 @@ class Router extends Component
         this.setState({
             titlePanel : ["Agendar una cita", "Mis citas medicas", "Mi perfil", "Mi historial", "Editar cita"]
         });
-        const AppointmentsDatesLS = localStorage.getItem('AppointmentsDates');
+        //const AppointmentsDatesLS = localStorage.getItem('AppointmentsDates');
         const renderLS = localStorage.getItem('render');
         //------------------------------------------------------------------------------
 
         const apiLoginLS = localStorage.getItem('apiLogin');
 
         //------------------------------------------------------------------------------
-        if(AppointmentsDatesLS)
+        if(apiLoginLS)
         {
             this.setState({
-                AppointmentsDates  : JSON.parse(AppointmentsDatesLS),
+               // AppointmentsDates  : JSON.parse(AppointmentsDatesLS),
                 render : JSON.parse(renderLS),
 
             //-------------------------------------------------------------
@@ -138,9 +138,9 @@ class Router extends Component
 
     componentDidUpdate()
     {
-        localStorage.setItem(
+        /*localStorage.setItem(
             'AppointmentsDates', JSON.stringify(this.state.AppointmentsDates)
-        );
+        );*/
         localStorage.setItem(
             'render', JSON.stringify(this.state.render)
         );
@@ -154,7 +154,7 @@ class Router extends Component
 
 
 
-    establishLogiN = (infLogin, apiLogin) =>
+    establishLogiN = (apiLogin) =>
     {
 
         //------------------------------------------------------------
@@ -162,10 +162,15 @@ class Router extends Component
         //console.log(apiLogin.createSession);
 
         this.setState({
-            apiLogin : apiLogin.createSession
+            apiLogin : apiLogin.createSession,
+            render : '/profile'
         });
 
         //-------------------------------------------------------------
+
+
+
+        /*
         const loginValues = loginTest;
 
         const getLoginValues = loginValues.filter((loginValue)=>(
@@ -194,13 +199,18 @@ class Router extends Component
                 render : '/profile'
             });
         }
+
+        */
+
+
     };
 
     closeSesion = () => {
         this.setState({
-                AppointmentsDates : {},
-                render : '/',
-                selectedValue: ''
+                //AppointmentsDates : {},
+                apiLogin: {},
+                render : '/'
+                //selectedValue: ''
             });
     };
 
@@ -213,18 +223,19 @@ class Router extends Component
     };
 
 
-
+    /*
     getSelectedValue = (selectedValue) =>{
 
         this.setState({
             selectedValue 
         });
         
-    };
+    };*/
 
 
 
-    deleteAppointment = () =>{
+/*
+deleteAppointment = () =>{
 
         if(this.state.selectedValue  === '')
         {
@@ -273,7 +284,12 @@ class Router extends Component
         
     };
 
+ */
 
+
+    
+
+/*
     updateAppointment = (uploadData) =>
     {
         const {specialty, date, doctor} = uploadData;
@@ -327,7 +343,11 @@ class Router extends Component
         
     };
 
-    editAppointment =(editData)=>{
+ */
+    
+
+    /*
+            editAppointment =(editData)=>{
 
         Swal.fire({
         title: '¿Esta segur@?',
@@ -381,12 +401,22 @@ class Router extends Component
         })
     }
 
+     */
+
+    
+
 
     //*********************************************************/
 
-    reload = () => {
+
+/*
+reload = () => {
         window.location.reload();
     }
+
+ */
+
+    
 
     render()
     {   
@@ -414,8 +444,8 @@ class Router extends Component
                             <ScheduleAppointment
                                 titlePanel = {this.state.titlePanel[0]}
                                 closeSesion = {this.closeSesion}
-                                AppointmentsDates = {this.state.AppointmentsDates}
-                                updateAppointment = {this.updateAppointment}
+                                //AppointmentsDates = {this.state.AppointmentsDates}
+                                //updateAppointment = {this.updateAppointment}
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
@@ -435,24 +465,25 @@ class Router extends Component
                             <MedicalAppointments
                                 titlePanel = {this.state.titlePanel[1]}
                                 closeSesion = {this.closeSesion}
-                                AppointmentsDates = {this.state.AppointmentsDates}
-                                getSelectedValue = {this.getSelectedValue}
-                                deleteAppointment = {this.deleteAppointment}
-                                selectedValue = {this.state.selectedValue}
+                                //AppointmentsDates = {this.state.AppointmentsDates}
+                                //getSelectedValue = {this.getSelectedValue}
+                                //deleteAppointment = {this.deleteAppointment}
+                                //selectedValue = {this.state.selectedValue}
                                 apiLogin = {this.state.apiLogin}
-                                getAppointment = {this.getAppointment}
+                                //getAppointment = {this.getAppointment}
                                 setRender = {this.setRender}
                             />
                         )}/>
                         <Route exact path="/profile" render={()=>(
                             <Profile
                                 titlePanel = {this.state.titlePanel[2]}
-                                AppointmentsDates = {this.state.AppointmentsDates}
+                                //AppointmentsDates = {this.state.AppointmentsDates}
                                 closeSesion = {this.closeSesion}
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
-                        <Route exact path="/my_history" render={()=>(
+                        {/*
+                            <Route exact path="/my_history" render={()=>(
                             <History
                                 titlePanel = {this.state.titlePanel[3]}
                                 closeSesion = {this.closeSesion}
@@ -460,6 +491,8 @@ class Router extends Component
                                 apiLogin = {this.state.apiLogin}
                             />
                         )}/>
+                         */}
+                        
                         {/*
                             <Route component={Error}/>
                          */}
