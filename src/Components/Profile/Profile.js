@@ -10,7 +10,6 @@ class Profile extends Component
             <div className="mx-auto">
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
-                    //AppointmentsDates = {this.props.AppointmentsDates}
                     apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">
@@ -19,7 +18,6 @@ class Profile extends Component
                             <form>
                                 <Panel
                                     titlePanel=  {this.props.titlePanel}
-                                    //AppointmentsDates = {this.props.AppointmentsDates}
                                     apiLogin = {this.props.apiLogin}
                                 />
                             </form>

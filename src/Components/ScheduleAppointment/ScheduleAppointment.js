@@ -20,17 +20,10 @@ let dateUpdate="";
 
 class ScheduleAppointment extends Component 
 {
-
-    
-
     specialtyRef = React.createRef();
-    //dateRef = React.createRef();
-    //doctorRef = React.createRef();
 
     updateAppointment = () =>
     {
-        
-
         const str = this.specialtyRef.current.value;
 
         const selectSelect = str.split(" / ");
@@ -41,52 +34,21 @@ class ScheduleAppointment extends Component
             selectSelect[2] === datoQuery.specialism
         ));
 
-        console.log(prueba[0].id);
             
         idUpdate = prueba[0].id;
         dateUpdate = prueba[0].date;
-        
-
-    
-
-        /*const specialty = this.specialtyRef.current.value,
-                date = this.dateRef.current.value,
-                doctor = this.doctorRef.current.value;
-        
-        console.log("hola");
-
-        if(specialty === "" || date === "" || doctor === "")
-        {
-            Swal.fire({
-                type: 'error',
-                title: 'Ocurrio un problema',
-                text: 'Todos los campos son obligatorios'
-            })
-        
-            return(null);
-        }
-
-        const uploadData = {
-            specialty,
-            date,
-            doctor
-        };
-
-
-        this.props.updateAppointment(uploadData);
-        e.currentTarget.reset();*/
     };
 
 
     graphqlAppointments = () =>
     {
         const CharactersQuery = () => {
-            if(Object.keys(this.props.apiLogin).length === 0)
-            {
-                return null;
-            }
+        if(Object.keys(this.props.apiLogin).length === 0)
+        {
+            return null;
+        }
 
-            const name = "";
+        const name = "";
             
 
             return <Query query={gql`query ($name:String!){
@@ -111,8 +73,6 @@ class ScheduleAppointment extends Component
                             <Panel
                                 titlePanel=  {this.props.titlePanel}
                                 specialtyRef = {this.specialtyRef}
-                                //dateRef = {this.dateRef}
-                                //doctorRef = {this.doctorRef}
                                 scheduleByPatient = {data.scheduleByPatient}
                             />
                         )
@@ -146,26 +106,13 @@ class ScheduleAppointment extends Component
             <div className="mx-auto">
                 <SideBar2
                     closeSesion = {this.props.closeSesion}
-                    //AppointmentsDates = {this.props.AppointmentsDates}
                     apiLogin = {this.props.apiLogin}
                 />
                 <div className="container">
                     <div className="row">
                         <div className="col-md-11 mx-auto">
                             <form onSubmit={this.updateAppointment}>
-
-                                {/*
-                                    <Panel
-                                    titlePanel=  {this.props.titlePanel}
-                                    specialtyRef = {this.specialtyRef}
-                                    dateRef = {this.dateRef}
-                                    doctorRef = {this.doctorRef}
-                                    />
-
-                                 */}
                                 <CharactersSchedulePanelQuery/>
-
-                                
                                     <Mutation mutation={gql`mutation ($id: String!, $patient: String!){
                                         assignSchedule(
                                             id: $id
@@ -186,13 +133,6 @@ class ScheduleAppointment extends Component
                                             }
                                             else
                                             {
-                                                //console.log(this.userRef.current.value)
-                                                //console.log(this.passwordRef.current.value);
-                                                //this.establishLogiN(data);
-                                                console.log(data.assignSchedule);
-                                                console.log(name);
-
-
                                                 axios.post('http://35.245.16.64:5000/graphql', {
                                                     query: gql`mutation ($name: String!, $email: String!, $date: String!){
                                                                         createNotif(user: {
@@ -208,38 +148,14 @@ class ScheduleAppointment extends Component
                                                         email: "lgavendanoa@unal.edu.co",
                                                         date: dateUpdate,
                                                     },
-                                                        })
-                                                       /* .then( (response) => {
-                                                        
-                                                                //console.log(response);
-                                                            
-                                                                }
-                                                            )*/
-
-
-
-
-
-
-
-
-
-
-
-
-                                            }
+                                            })}
                                             
                                             return(
-
                                                 <div className="medical_button_collection">
                                                     <button onClick={(e)=>{
 
                                                         e.preventDefault();
                                                         this.updateAppointment() //funcion que me trae lo que necesito
-
-                                                        console.log("Hola amigos, vamos a agregar jaja");
-                                                        console.log(idUpdate);
-                                                        console.log(name);
 
                                                         addTodo({
                                                         variables: {
@@ -248,8 +164,6 @@ class ScheduleAppointment extends Component
                                                         }
 
                                                     });
-
-                                                    
 
                                                     Swal.fire({
                                                         position: 'top-center',
@@ -265,7 +179,6 @@ class ScheduleAppointment extends Component
                                         }
                                     }
                                     </Mutation>
-                                
                             </form>
                         </div>
                     </div>
